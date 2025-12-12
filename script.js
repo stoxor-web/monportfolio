@@ -1,233 +1,215 @@
-(() => {
-  const $ = (q, el = document) => el.querySelector(q);
-  const $$ = (q, el = document) => Array.from(el.querySelectorAll(q));
+console.log("Code JavaScript optimisé chargé.");
 
-  const header = $('[data-header]');
-  const nav = $('[data-nav]');
-  const menuToggle = $('[data-menu-toggle]');
-  const themeToggle = $('[data-theme-toggle]');
-  const year = $('[data-year]');
-  const toast = $('[data-toast]');
+// --- 1. LAZY LOADING DES IMAGES DE PROJET ---
+const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const card = entry.target;
+            const imgUrl = card.getAttribute('data-img');
+            const projectImageDiv = card.querySelector('.project-image');
+            
+            if (imgUrl) {
+                // Définit l'image de fond et retire la classe lazy-load
+                projectImageDiv.style.backgroundImage = `url('${imgUrl}')`;
+                card.classList.remove('lazy-load-img');
+            }
+            observer.unobserve(card);
+        }
+    });
+}, { threshold: 0.1 }); 
 
-  // ====== Helpers
-  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-  const showToast = async (msg) => {
-    if (!toast) return;
-    toast.textContent = msg;
-    toast.classList.add('is-show');
-    await sleep(1800);
-    toast.classList.remove('is-show');
-  };
+document.querySelectorAll('.lazy-load-img').forEach(card => {
+    lazyLoadObserver.observe(card);
+});
 
-  // ====== Year
-  if (year) year.textContent = String(new Date().getFullYear());
 
-  // ====== Theme
-  const THEME_KEY = 'stoxor_theme';
+// --- 2. GESTION DU FORMULAIRE ET MESSAGE DE SUCCÈS ---
+const contactForm = document.getElementById('contact-form');
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+const nameError = document.getElementById('name-error');
+const emailError = document.getElementById('email-error');
+const successMessage = document.getElementById('form-success-message');
 
-  const getPreferredTheme = () => {
-    const saved = localStorage.getItem(THEME_KEY);
-    if (saved === 'dark' || saved === 'light') return saved;
-    return window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: light)').matches
-      ? 'light'
-      : 'dark';
-  };
-
-  const applyTheme = (t) => {
-    document.documentElement.setAttribute('data-theme', t);
-    if (themeToggle) {
-      const icon = themeToggle.querySelector('.iconbtn__icon');
-      if (icon) icon.textContent = t === 'light' ? '☀' : '☾';
+function validateName() {
+    if (nameInput.value.length < 2) {
+        nameError.textContent = "Le nom doit contenir au moins 2 caractères.";
+        return false;
     }
-  };
+    nameError.textContent = "";
+    return true;
+}
 
-  applyTheme(getPreferredTheme());
-
-  themeToggle?.addEventListener('click', () => {
-    const current =
-      document.documentElement.getAttribute('data-theme') || 'dark';
-    const next = current === 'dark' ? 'light' : 'dark';
-    localStorage.setItem(THEME_KEY, next);
-    applyTheme(next);
-    showToast(next === 'light' ? 'Thème clair' : 'Thème sombre');
-  });
-
-  // ====== Mobile menu
-  const closeMenu = () => nav?.classList.remove('is-open');
-
-  menuToggle?.addEventListener('click', () => {
-    nav?.classList.toggle('is-open');
-  });
-
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMenu();
-  });
-
-  nav?.addEventListener('click', (e) => {
-    const a = e.target.closest('a');
-    if (!a) return;
-    closeMenu();
-  });
-
-  // ====== Reveal on scroll
-  const revealEls = $$('[data-reveal]');
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-revealed');
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-
-    revealEls.forEach((el) => io.observe(el));
-  } else {
-    revealEls.forEach((el) => el.classList.add('is-revealed'));
-  }
-
-  // ====== Scrollspy
-  const links = $$('.nav__link');
-  const sections = links
-    .map((a) => $(a.getAttribute('href')))
-    .filter(Boolean);
-
-  const setActiveLink = () => {
-    const y = window.scrollY + (header?.offsetHeight || 72) + 18;
-    let current = sections[0]?.id;
-    for (const sec of sections) {
-      if (sec.offsetTop <= y) current = sec.id;
+function validateEmail() {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailInput.value)) {
+        emailError.textContent = "Veuillez entrer une adresse email valide.";
+        return false;
     }
-    links.forEach((a) => {
-      const id = a.getAttribute('href')?.slice(1);
-      a.classList.toggle('is-active', id === current);
+    emailError.textContent = "";
+    return true;
+}
+
+if (nameInput) nameInput.addEventListener('input', validateName);
+if (emailInput) emailInput.addEventListener('input', validateEmail);
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault(); 
+        const isNameValid = validateName();
+        const isEmailValid = validateEmail();
+
+        if (isNameValid && isEmailValid) {
+            
+            const formspreeAction = contactForm.action;
+            const formData = new FormData(contactForm);
+            
+            try {
+                const response = await fetch(formspreeAction, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    contactForm.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    setTimeout(() => successMessage.classList.add('visible'), 10); 
+                    
+                } else {
+                    console.error("Erreur lors de l'envoi du formulaire.");
+                }
+            } catch (error) {
+                console.error("Erreur réseau:", error);
+            }
+
+        }
     });
-  };
+}
 
-  window.addEventListener('scroll', setActiveLink, { passive: true });
-  setActiveLink();
 
-  // ====== Projects filter
-  const chips = $$('[data-filter]');
-  const projectsWrap = $('[data-projects]');
-  const projects = projectsWrap ? $$('.project', projectsWrap) : [];
-
-  const applyFilter = (tag) => {
-    chips.forEach((c) => c.classList.toggle('is-active', c.dataset.filter === tag));
-    projects.forEach((p) => {
-      const tags = (p.dataset.tags || '').split(/\s+/).filter(Boolean);
-      const ok = tag === 'all' || tags.includes(tag);
-      p.style.display = ok ? '' : 'none';
+// --- 3. ANIMATION AU DÉFILEMENT STAGGERED ---
+const staggerObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const element = entry.target;
+            const index = parseInt(element.getAttribute('data-index'));
+            
+            element.style.transitionDelay = `${index * 0.15}s`;
+            element.classList.add('visible');
+            
+            observer.unobserve(element);
+        }
     });
-  };
+}, { threshold: 0.1 });
 
-  chips.forEach((btn) => {
-    btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
-  });
+document.querySelectorAll('.stagger-item').forEach(el => {
+    staggerObserver.observe(el);
+});
 
-  // ====== Avis clients (marquee)
-  // Le défilement est en CSS. Ici on rend la boucle "infinie" robuste :
-  // - si tu n'as pas dupliqué les avis en HTML, on clone une 2e fois
-  // - on ajuste la durée pour garder une vitesse agréable
-  const setupMarquees = () => {
-    const marquees = $$('.marquee');
-    marquees.forEach((m) => {
-      const track = $('.marquee__track', m);
-      if (!track) return;
 
-      // Si pas de duplication (aucun aria-hidden), on clone tous les enfants une fois
-      const hasHidden = !!track.querySelector('[aria-hidden="true"]');
-      if (!hasHidden) {
-        const children = Array.from(track.children);
-        children.forEach((node) => {
-          const clone = node.cloneNode(true);
-          clone.setAttribute('aria-hidden', 'true');
-          track.appendChild(clone);
-        });
-      }
+// --- 4. EFFET HOVER 3D ---
+const cards3d = document.querySelectorAll('.hover-3d');
 
-      // Ajuste la durée selon la largeur d'un "cycle" (la moitié si doublé)
-      const total = track.scrollWidth;
-      const cycleWidth = Math.max(1, Math.round(total / 2));
-      const pxPerSecond = 70;
-      const seconds = Math.max(18, Math.round(cycleWidth / pxPerSecond));
-      track.style.animationDuration = `${seconds}s`;
+cards3d.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const cardRect = card.getBoundingClientRect();
+        const x = e.clientX - cardRect.left; 
+        const y = e.clientY - cardRect.top;  
 
-      // Pause si focus clavier à l'intérieur
-      m.addEventListener('focusin', () => {
-        track.style.animationPlayState = 'paused';
-      });
-      m.addEventListener('focusout', () => {
-        track.style.animationPlayState = '';
-      });
+        const center_x = cardRect.width / 2;
+        const center_y = cardRect.height / 2;
+
+        const rotate_x = ((y - center_y) / center_y) * 5; 
+        const rotate_y = ((x - center_x) / center_x) * -5;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotate_x}deg) rotateY(${rotate_y}deg) scale(1.02)`;
     });
-  };
 
-  window.addEventListener('load', setupMarquees, { once: true });
-  window.addEventListener(
-    'resize',
-    () => requestAnimationFrame(setupMarquees),
-    { passive: true }
-  );
-  setupMarquees();
-
-  // ====== Copy email
-  const emailEl = $('[data-email]');
-  const email = emailEl?.textContent?.trim() || 'JeanValJean@groszeub.com';
-
-  $$('[data-copy-email]').forEach((btn) => {
-    btn.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(email);
-        showToast('Email copié ✅');
-      } catch {
-        showToast('Copie impossible — sélectionne et copie manuellement.');
-      }
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
     });
-  });
+});
 
-  // ====== Contact form (mailto)
-  const form = $('[data-form]');
-  const status = $('[data-form-status]');
 
-  const setStatus = (msg) => {
-    if (status) status.textContent = msg;
-  };
+// --- 5. NAVIGATION INTELLIGENTE (SCROLL SPY) ---
+const sections = document.querySelectorAll('section, header');
+const navLinks = document.querySelectorAll('.nav-link');
 
-  form?.addEventListener('submit', (e) => {
-    e.preventDefault();
+window.addEventListener('scroll', () => {
+    let current = 'accueil';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= (sectionTop - sectionHeight / 4)) {
+            current = section.getAttribute('id');
+        }
+    });
 
-    const fd = new FormData(form);
-    const name = String(fd.get('name') || '').trim();
-    const from = String(fd.get('email') || '').trim();
-    const subject = String(fd.get('subject') || '').trim();
-    const message = String(fd.get('message') || '').trim();
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+            link.classList.add('active');
+        }
+    });
+});
 
-    if (!name || !from || !subject || !message) {
-      setStatus('Merci de compléter tous les champs.');
-      showToast('Champs manquants');
-      return;
+// --- 6. MENU MOBILE ---
+const mobileMenu = document.getElementById('mobile-menu');
+const navList = document.querySelector('.nav-list');
+
+if (mobileMenu) {
+    mobileMenu.addEventListener('click', () => {
+        navList.classList.toggle('active');
+    });
+}
+document.querySelectorAll('.nav-list a').forEach(link => {
+    link.addEventListener('click', () => {
+        navList.classList.remove('active');
+    });
+});
+
+// --- 7. TYPEWRITER INITIALISATION ---
+const TypeWriter = function(txtElement, words, wait = 3000) {
+    this.txtElement = txtElement;
+    this.words = words;
+    this.txt = '';
+    this.wordIndex = 0;
+    this.wait = parseInt(wait, 10);
+    this.type();
+    this.isDeleting = false;
+}
+
+TypeWriter.prototype.type = function() {
+    const current = this.wordIndex % this.words.length;
+    const fullTxt = this.words[current];
+
+    if(this.isDeleting) { this.txt = fullTxt.substring(0, this.txt.length - 1); } 
+    else { this.txt = fullTxt.substring(0, this.txt.length + 1); }
+
+    this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
+
+    let typeSpeed = 100;
+    if(this.isDeleting) { typeSpeed /= 2; }
+
+    if(!this.isDeleting && this.txt === fullTxt) {
+        typeSpeed = this.wait;
+        this.isDeleting = true;
+    } else if(this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.wordIndex++;
+        typeSpeed = 500;
     }
 
-    const body = [
-      `Nom: ${name}`,
-      `Email: ${from}`,
-      '',
-      message,
-      '',
-      '---',
-      'Envoyé depuis le site portfolio.'
-    ].join('\n');
+    setTimeout(() => this.type(), typeSpeed);
+}
 
-    const mailto = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-
-    window.location.href = mailto;
-    setStatus('Ouverture de ton client mail…');
-  });
-})();
+document.addEventListener('DOMContentLoaded', () => {
+    const txtElement = document.querySelector('.txt-type');
+    if (txtElement) {
+        const words = JSON.parse(txtElement.getAttribute('data-words'));
+        const wait = txtElement.getAttribute('data-wait');
+        new TypeWriter(txtElement, words, wait);
+    }
+});

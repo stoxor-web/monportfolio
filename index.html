@@ -1,628 +1,266 @@
-<!doctype html>
-<html lang="fr">
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#0b0f19" />
-
-  <title>STOXOR DEV — Développement Web • Informatique • Sécurité Web</title>
-  <meta name="description" content="Développement de sites & applications, services informatiques et sécurisation web (audit, hardening, OWASP)." />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="STOXOR DEV — Développement Web • Informatique • Sécurité Web" />
-  <meta property="og:description" content="Sites rapides, maintenables et sécurisés. Audit, pentest, durcissement, conformité." />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="fr_FR" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta SEO de base -->
+    <meta name="description" content="Portfolio Développeur Full Stack, Conception et Sécurité Web.">
+    <title>Mon Portfolio - Solutions Digitales</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Favicon (à ajouter si vous en avez un) -->
+    <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
 </head>
 <body>
-  <a class="skip" href="#contenu">Aller au contenu</a>
 
-  <header class="header" data-header>
-    <div class="container header__inner">
-      <a class="brand" href="#top" aria-label="Accueil">
-        <span class="brand__mark" aria-hidden="true">⌁</span>
-        <span class="brand__name">STOXOR DEV</span>
-        <span class="brand__tag">Web • IT • Sec</span>
-      </a>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">Mon<span class="highlight">Portfolio</span><span class="angle-bracket"> /&gt;</span></div>
+        
+        <div class="nav-right-controls">
+            <!-- Bouton Mode Sombre RETIRÉ -->
 
-      <nav class="nav" aria-label="Navigation principale" data-nav>
-        <a class="nav__link" href="#services">Services</a>
-        <a class="nav__link" href="#realisations">Réalisations</a>
-        <a class="nav__link" href="#avis">Avis</a>
-        <a class="nav__link" href="#securite">Sécurité</a>
-        <a class="nav__link" href="#process">Process</a>
-        <a class="nav__link" href="#contact">Contact</a>
-      </nav>
-
-      <div class="header__actions">
-        <button class="iconbtn" type="button" data-theme-toggle aria-label="Basculer thème">
-          <span class="iconbtn__icon" aria-hidden="true">☾</span>
-        </button>
-        <button class="iconbtn iconbtn--menu" type="button" data-menu-toggle aria-label="Ouvrir le menu">
-          <span class="iconbtn__icon" aria-hidden="true">≡</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <main id="contenu">
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="container hero__grid">
-        <div class="hero__content">
-          <p class="pill" data-reveal>Disponible • Projets 2025</p>
-          <h1 class="hero__title" data-reveal>
-            Des sites <span class="grad">performants</span>,
-            <span class="grad">sécurisés</span> et faciles à faire évoluer.
-          </h1>
-          <p class="hero__lead" data-reveal>
-            Développement web, services informatiques et sécurité applicative.
-            On livre vite, proprement, et on protège ce qui compte.
-          </p>
-
-          <div class="hero__cta" data-reveal>
-            <a class="btn" href="#contact">Demander un devis</a>
-            <a class="btn btn--ghost" href="#realisations">Voir les projets</a>
-          </div>
-
-          <dl class="stats" data-reveal>
-            <div class="stats__item">
-              <dt>Temps de chargement</dt>
-              <dd>&lt; 2s</dd>
+            <!-- Menu Burger -->
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
-            <div class="stats__item">
-              <dt>Bonnes pratiques</dt>
-              <dd>OWASP</dd>
-            </div>
-            <div class="stats__item">
-              <dt>Suivi</dt>
-              <dd>Maintenance</dd>
-            </div>
-          </dl>
         </div>
+        
+        <!-- Liste de navigation principale -->
+        <ul class="nav-list">
+            <li><a href="#accueil" class="nav-link">Accueil</a></li>
+            <li><a href="#competences" class="nav-link">Expertises</a></li>
+            <li><a href="#projets" class="nav-link">Projets</a></li>
+            <li><a href="#avis" class="nav-link">Avis</a></li>
+            <li><a href="#contact" class="btn-devis">Contact</a></li>
+        </ul>
+    </nav>
 
-        <div class="hero__panel" data-reveal>
-          <div class="panel">
-            <div class="panel__head">
-              <div class="dot dot--r"></div>
-              <div class="dot dot--y"></div>
-              <div class="dot dot--g"></div>
-              <span class="panel__title">Livrables</span>
+    <main>
+        <!-- HERO SECTION -->
+        <header id="accueil">
+            <div class="overlay"></div>
+            <div class="content">
+                <!-- EFFET MACHINE À ÉCRIRE -->
+                <h1 class="hero-title">
+                    <span class="tech-label">Code / Conception / Sécurité</span><br>
+                    Je suis <span class="txt-type" data-wait="2000" data-words='["Développeur Web", "Architecte Logiciel", "Expert en Cybersécurité"]'></span>
+                </h1>
+                <p>Développez votre présence en ligne avec des applications performantes, sécurisées et un design orienté utilisateur.</p>
+                
+                <div class="dispo-badge">
+                    <span class="dot"></span> Ouvert aux missions
+                </div>
+                
+                <div class="hero-buttons">
+                    <a href="#projets" class="cta-button primary">Voir les projets</a>
+                    <a href="#contact" class="cta-button secondary">Démarrer un projet</a>
+                </div>
             </div>
-            <div class="panel__body">
-              <div class="kpis">
-                <div class="kpi">
-                  <p class="kpi__label">Audit rapide</p>
-                  <p class="kpi__value">48h</p>
-                </div>
-                <div class="kpi">
-                  <p class="kpi__label">Déploiement</p>
-                  <p class="kpi__value">CI/CD</p>
-                </div>
-                <div class="kpi">
-                  <p class="kpi__label">Sécurité</p>
-                  <p class="kpi__value">Headers + WAF</p>
-                </div>
-                <div class="kpi">
-                  <p class="kpi__label">Qualité</p>
-                  <p class="kpi__value">Tests</p>
-                </div>
-              </div>
+        </header>
 
-              <div class="codebox" aria-label="Extrait">
-                <pre><code>// Exemple : check sécurité basique
-const headers = [
-  'Content-Security-Policy',
-  'Strict-Transport-Security',
-  'X-Content-Type-Options',
-  'Referrer-Policy'
-]
-</code></pre>
-              </div>
-
-              <div class="badges" aria-label="Technos">
-                <span class="badge">HTML/CSS/JS</span>
-                <span class="badge">React</span>
-                <span class="badge">Node</span>
-                <span class="badge">PHP</span>
-                <span class="badge">Linux</span>
-                <span class="badge">Cloud</span>
-              </div>
+        <!-- COMPÉTENCES -->
+        <section id="competences">
+            <h2>Domaines d'Expertise</h2>
+            <div class="grid-container" id="competences-grid">
+                <!-- Ajout des classes pour l'animation staggered et l'effet 3D -->
+                <div class="card stagger-item hover-3d" data-index="0">
+                    <i class="fas fa-server"></i>
+                    <h3>Développement Backend</h3>
+                    <p>Architecture robuste, APIs REST/GraphQL, Bases de données optimisées.</p>
+                </div>
+                <div class="card stagger-item hover-3d" data-index="1">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Sécurité Web</h3>
+                    <p>Tests d'intrusion, audit de code, protection contre les menaces courantes (OWASP).</p>
+                </div>
+                <div class="card stagger-item hover-3d" data-index="2">
+                    <i class="fas fa-desktop"></i>
+                    <h3>Design Front-end</h3>
+                    <p>Interfaces rapides (React/Angular), accessibilité, expérience utilisateur (UX).</p>
+                </div>
             </div>
-          </div>
+        </section>
+
+        <!-- PROJETS -->
+        <section id="projets" class="bg-alt">
+            <h2>Mes Réalisations</h2>
+            
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="mobile">Sécurité</button>
+                <button class="filter-btn" data-filter="design">Conception</button>
+            </div>
+
+            <div class="grid-container project-grid">
+                <!-- Ajout des data-img pour Lazy Loading via JS -->
+                <div class="project-card lazy-load-img stagger-item hover-3d" data-category="web" data-img="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" data-index="3">
+                    <div class="project-image"></div>
+                    <div class="project-info">
+                        <span class="tag">Web</span>
+                        <h3>Plateforme SaaS</h3>
+                        <a href="#" class="project-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card lazy-load-img stagger-item hover-3d" data-category="mobile" data-img="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" data-index="4">
+                    <div class="project-image"></div>
+                    <div class="project-info">
+                        <span class="tag">Sécurité</span>
+                        <h3>Audit de Code</h3>
+                        <a href="#" class="project-link">Voir le rapport <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card lazy-load-img stagger-item hover-3d" data-category="design" data-img="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" data-index="5">
+                    <div class="project-image"></div>
+                    <div class="project-info">
+                        <span class="tag">Conception</span>
+                        <h3>Dashboard IOT</h3>
+                        <a href="#" class="project-link">Voir la maquette <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AVIS CLIENTS (SCROLLING) -->
+        <section id="avis">
+            <h2>Avis Clients</h2>
+            
+            <!-- Conteneur du défilement -->
+            <div class="testimonial-scroller">
+                <div class="testimonial-track">
+                    
+                    <!-- GROUPE 1 -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>"Le niveau de sécurité de notre plateforme a été grandement amélioré. Travail technique impeccable."</p>
+                        <div class="author">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
+                            <div><h4>Marc Dupont</h4><span>CEO, TechStart</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>"L'application est rapide, le code est propre. Un développeur orienté résultats."</p>
+                        <div class="author">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client">
+                            <div><h4>Sophie Martin</h4><span>Fondatrice, FlowerShop</span></div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>"Expertise en architecture logicielle qui a sauvé notre projet complexe."</p>
+                        <div class="author">
+                            <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Client">
+                            <div><h4>Thomas Bernard</h4><span>Directeur, Agency One</span></div>
+                        </div>
+                    </div>
+
+                    <!-- GROUPE 2 (Doublons pour l'effet infini) -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>"Le niveau de sécurité de notre plateforme a été grandement amélioré. Travail technique impeccable."</p>
+                        <div class="author">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
+                            <div><h4>Marc Dupont</h4><span>CEO, TechStart</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>"L'application est rapide, le code est propre. Un développeur orienté résultats."</p>
+                        <div class="author">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client">
+                            <div><h4>Sophie Martin</h4><span>Fondatrice, FlowerShop</span></div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>"Expertise en architecture logicielle qui a sauvé notre projet complexe."</p>
+                        <div class="author">
+                            <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Client">
+                            <div><h4>Thomas Bernard</h4><span>Directeur, Agency One</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="bg-dark-section">
+            <h2>Prêt à innover ?</h2>
+            <!-- Conteneur pour le message de succès -->
+            <div id="form-success-message" class="success-message" style="display: none;">
+                <i class="fas fa-check-circle"></i> Message envoyé ! Je vous recontacte sous 24h.
+            </div>
+
+            <!-- N'oubliez pas de remplacer VOTRE_ID_ICI par votre ID Formspree -->
+            <form id="contact-form" action="https://formspree.io/f/VOTRE_ID_ICI" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" name="name" id="name" placeholder="Votre Nom" required>
+                        <p class="error-message" id="name-error"></p>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" id="email" placeholder="Votre Email" required>
+                        <p class="error-message" id="email-error"></p>
+                    </div>
+                </div>
+                <select name="sujet">
+                    <option>Sélectionnez un sujet...</option>
+                    <option>Développement Full Stack</option>
+                    <option>Audit et Sécurité Web</option>
+                    <option>Conception (UX/UI)</option>
+                    <option>Autre</option>
+                </select>
+                <textarea name="message" rows="5" placeholder="Décrivez votre besoin..." required></textarea>
+                <button type="submit">Envoyer la demande <i class="fas fa-code"></i></button>
+            </form>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <!-- COLONNE 1 : Logo et réseaux sociaux -->
+            <div class="footer-col">
+                <h3>Mon<span class="highlight">Portfolio</span><span class="angle-bracket"> /&gt;</span></h3>
+                <p>Développement | Sécurité | Conception.</p>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            
+            <!-- COLONNE 2 : Liens Rapides -->
+            <div class="footer-col">
+                <h3>Liens Rapides</h3>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#competences">Expertises</a></li>
+                    <li><a href="#projets">Projets</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- COLONNE 3 : Contact -->
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <p><i class="fas fa-envelope"></i> contact@email.com</p>
+                <p><i class="fas fa-phone"></i> +33 6 00 00 00 00</p>
+            </div>
         </div>
-      </div>
-
-      <div class="hero__back" aria-hidden="true"></div>
-    </section>
-
-    <!-- SERVICES -->
-    <section class="section" id="services">
-      <div class="container">
-        <div class="section__head" data-reveal>
-          <h2>Services</h2>
-          <p>Un accompagnement complet : conception, dev, mise en prod et sécurité.</p>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MonPortfolio. Tous droits réservés.</p>
         </div>
+    </footer>
 
-        <div class="cards">
-          <article class="card" data-reveal>
-            <div class="card__icon" aria-hidden="true">⚡</div>
-            <h3>Développement Web</h3>
-            <p>Sites vitrines, e‑commerce, dashboards, landing pages. Performance, SEO, accessibilité.</p>
-            <ul class="list">
-              <li>UX/UI propre & responsive</li>
-              <li>Optimisation Core Web Vitals</li>
-              <li>Intégration analytics & consent</li>
-            </ul>
-          </article>
-
-          <article class="card" data-reveal>
-            <div class="card__icon" aria-hidden="true">🧩</div>
-            <h3>Informatique / IT</h3>
-            <p>Infrastructure, automatisation, sauvegardes, supervision. On stabilise et on documente.</p>
-            <ul class="list">
-              <li>Linux / Windows / Réseau</li>
-              <li>Monitoring & alerting</li>
-              <li>Backups 3‑2‑1</li>
-            </ul>
-          </article>
-
-          <article class="card" data-reveal>
-            <div class="card__icon" aria-hidden="true">🛡️</div>
-            <h3>Sécurité Web</h3>
-            <p>Audit, durcissement, pentest applicatif, remédiation. Approche pragmatique et traçable.</p>
-            <ul class="list">
-              <li>OWASP Top 10</li>
-              <li>Headers, CSP, WAF</li>
-              <li>Revue de code & secrets</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- RÉALISATIONS -->
-    <section class="section section--alt" id="realisations">
-      <div class="container">
-        <div class="section__head" data-reveal>
-          <h2>Réalisations</h2>
-          <p>Exemples de missions typiques chez STOXOR DEV (placeholders — remplace par tes cas réels).</p>
-        </div>
-
-        <div class="filters" role="tablist" aria-label="Filtres projets" data-reveal>
-          <button class="chip is-active" type="button" data-filter="all" role="tab">Tout</button>
-          <button class="chip" type="button" data-filter="web" role="tab">Web</button>
-          <button class="chip" type="button" data-filter="ecom" role="tab">E‑commerce</button>
-          <button class="chip" type="button" data-filter="sec" role="tab">Sécurité</button>
-          <button class="chip" type="button" data-filter="it" role="tab">IT</button>
-        </div>
-
-        <div class="projects" data-projects>
-          <article class="project" data-tags="web" data-reveal>
-            <div class="project__thumb" aria-hidden="true"></div>
-            <div class="project__body">
-              <h3>Site corporate premium</h3>
-              <p>Design sobre, SEO, accessibilité, optimisation performance et contenus structurés.</p>
-              <div class="badges">
-                <span class="badge">SEO</span><span class="badge">A11y</span><span class="badge">Perf</span>
-              </div>
-              <div class="project__actions">
-                <a class="link" href="#contact">Demander un site similaire →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project" data-tags="web" data-reveal>
-            <div class="project__thumb project__thumb--b" aria-hidden="true"></div>
-            <div class="project__body">
-              <h3>Landing page conversion</h3>
-              <p>Copy clair, tracking propre, consentement cookies, A/B tests et formulaires anti‑spam.</p>
-              <div class="badges">
-                <span class="badge">Conversion</span><span class="badge">Tracking</span><span class="badge">Anti‑spam</span>
-              </div>
-              <div class="project__actions">
-                <a class="link" href="#contact">Booster tes leads →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project" data-tags="ecom web sec" data-reveal>
-            <div class="project__thumb project__thumb--c" aria-hidden="true"></div>
-            <div class="project__body">
-              <h3>E‑commerce rapide & sécurisé</h3>
-              <p>Catalogue, paiement, webhooks, optimisation panier et durcissement côté admin.</p>
-              <div class="badges">
-                <span class="badge">Payments</span><span class="badge">Webhooks</span><span class="badge">WAF</span>
-              </div>
-              <div class="project__actions">
-                <a class="link" href="#contact">Parler e‑commerce →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project" data-tags="web it" data-reveal>
-            <div class="project__thumb project__thumb--d" aria-hidden="true"></div>
-            <div class="project__body">
-              <h3>Dashboard / back‑office</h3>
-              <p>RBAC, logs, API, export, et expérience admin fluide (sans dette technique).</p>
-              <div class="badges">
-                <span class="badge">RBAC</span><span class="badge">API</span><span class="badge">Logs</span>
-              </div>
-              <div class="project__actions">
-                <a class="link" href="#contact">Créer un back‑office →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project" data-tags="sec" data-reveal>
-            <div class="project__thumb" aria-hidden="true"></div>
-            <div class="project__body">
-              <h3>Audit OWASP + remédiation</h3>
-              <p>Revue de code, dépendances, auth, XSS/CSRF, rapport clair + PRs de correction.</p>
-              <div class="badges">
-                <span class="badge">OWASP</span><span class="badge">CSP</span><span class="badge">Fixes</span>
-              </div>
-              <div class="project__actions">
-                <a class="link" href="#securite">Voir l’approche sécurité →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project" data-tags="it sec" data-reveal>
-            <div class="project__thumb project__thumb--b" aria-hidden="true"></div>
-            <div class="project__body">
-              <h3>Hardening serveur + sauvegardes</h3>
-              <p>SSH keys, firewall, fail2ban, updates, backups 3‑2‑1 et procédures de reprise.</p>
-              <div class="badges">
-                <span class="badge">Hardening</span><span class="badge">Backups</span><span class="badge">Runbook</span>
-              </div>
-              <div class="project__actions">
-                <a class="link" href="#contact">Sécuriser ton infra →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project" data-tags="it web" data-reveal>
-            <div class="project__thumb project__thumb--c" aria-hidden="true"></div>
-            <div class="project__body">
-              <h3>CI/CD & déploiement GitHub</h3>
-              <p>Build, tests, déploiement, rollback, environnements (staging/prod) et secrets.</p>
-              <div class="badges">
-                <span class="badge">CI/CD</span><span class="badge">Tests</span><span class="badge">Deploy</span>
-              </div>
-              <div class="project__actions">
-                <a class="link" href="#contact">Automatiser la prod →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project" data-tags="it" data-reveal>
-            <div class="project__thumb project__thumb--d" aria-hidden="true"></div>
-            <div class="project__body">
-              <h3>Monitoring & alerting</h3>
-              <p>Uptime, métriques, logs, alertes, et visibilité sur les incidents (avant les clients).</p>
-              <div class="badges">
-                <span class="badge">Monitoring</span><span class="badge">Alerts</span><span class="badge">SLA</span>
-              </div>
-              <div class="project__actions">
-                <a class="link" href="#contact">Mettre en place →</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- AVIS -->
-    <section class="section" id="avis">
-      <div class="container">
-        <div class="section__head" data-reveal>
-          <h2>Avis clients</h2>
-          <p>Exemples d’avis (placeholders) — remplace par tes vrais retours.</p>
-        </div>
-
-        <div class="marquee" data-reveal aria-label="Avis clients">
-          <div class="marquee__track">
-            <div class="marquee__group">
-              <article class="tcard">
-                <p class="tcard__quote">“Site livré en avance, rapide, et super propre. On a gagné en crédibilité dès la mise en ligne.”</p>
-                <div class="tcard__meta">
-                  <span><strong>Sofia M.</strong> — Cabinet de conseil</span>
-                  <span class="stars" aria-label="5 sur 5">★★★★★</span>
-                </div>
-              </article>
-
-              <article class="tcard">
-                <p class="tcard__quote">“Audit clair, priorités bien expliquées, corrections en PR. On sait exactement où on va.”</p>
-                <div class="tcard__meta">
-                  <span><strong>Karim D.</strong> — SaaS B2B</span>
-                  <span class="stars" aria-label="5 sur 5">★★★★★</span>
-                </div>
-              </article>
-
-              <article class="tcard">
-                <p class="tcard__quote">“Déploiement automatisé + monitoring : fini les surprises en prod. Très pro.”</p>
-                <div class="tcard__meta">
-                  <span><strong>Emma L.</strong> — E‑commerce</span>
-                  <span class="stars" aria-label="5 sur 5">★★★★★</span>
-                </div>
-              </article>
-
-              <article class="tcard">
-                <p class="tcard__quote">“Refonte + SEO : pages plus rapides, mieux référencées, et une UX beaucoup plus claire.”</p>
-                <div class="tcard__meta">
-                  <span><strong>Thomas R.</strong> — Agence locale</span>
-                  <span class="stars" aria-label="5 sur 5">★★★★★</span>
-                </div>
-              </article>
-
-              <article class="tcard">
-                <p class="tcard__quote">“Sécurité prise au sérieux : CSP, headers, durcissement serveur… on dort mieux.”</p>
-                <div class="tcard__meta">
-                  <span><strong>Nadia A.</strong> — Plateforme web</span>
-                  <span class="stars" aria-label="5 sur 5">★★★★★</span>
-                </div>
-              </article>
-
-              <article class="tcard">
-                <p class="tcard__quote">“Communication simple, pas de blabla, et surtout : des résultats.”</p>
-                <div class="tcard__meta">
-                  <span><strong>Lucas P.</strong> — Artisan</span>
-                  <span class="stars" aria-label="5 sur 5">★★★★★</span>
-                </div>
-              </article>
-            </div>
-
-            <div class="marquee__group" aria-hidden="true">
-              <article class="tcard">
-                <p class="tcard__quote">“Site livré en avance, rapide, et super propre. On a gagné en crédibilité dès la mise en ligne.”</p>
-                <div class="tcard__meta">
-                  <span><strong>Sofia M.</strong> — Cabinet de conseil</span>
-                  <span class="stars" aria-label="5 sur 5">★★★★★</span>
-                </div>
-              </article>
-
-              <article class="tcard">
-                <p class="tcard__quote">“Audit clair, priorités bien expliquées, corrections en PR. On sait exactement où on va.”</p>
-                <div class="tcard__meta">
-                  <span><strong>Karim D.</strong> — SaaS B2B</span>
-                  <span class="stars" aria-label="5 sur 5">★★★★★</span>
-                </div>
-              </article>
-
-              <article class="tcard">
-                <p class="tcard__quote">“Déploiement automatisé + monitoring : fini les surprises en prod. Très pro.”</p>
-                <div class="tcard__meta">
-                  <span><strong>Emma L.</strong> — E‑commerce</span>
-                  <span class="stars" aria-label="5 sur 5">★★★★★</span>
-                </div>
-              </article>
-
-              <article class="tcard">
-                <p class="tcard__quote">“Refonte + SEO : pages plus rapides, mieux référencées, et une UX beaucoup plus claire.”</p>
-                <div class="tcard__meta">
-                  <span><strong>Thomas R.</strong> — Agence locale</span>
-                  <span class="stars" aria-label="5 sur 5">★★★★★</span>
-                </div>
-              </article>
-
-              <article class="tcard">
-                <p class="tcard__quote">“Sécurité prise au sérieux : CSP, headers, durcissement serveur… on dort mieux.”</p>
-                <div class="tcard__meta">
-                  <span><strong>Nadia A.</strong> — Plateforme web</span>
-                  <span class="stars" aria-label="5 sur 5">★★★★★</span>
-                </div>
-              </article>
-
-              <article class="tcard">
-                <p class="tcard__quote">“Communication simple, pas de blabla, et surtout : des résultats.”</p>
-                <div class="tcard__meta">
-                  <span><strong>Lucas P.</strong> — Artisan</span>
-                  <span class="stars" aria-label="5 sur 5">★★★★★</span>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SÉCURITÉ -->
-    <section class="section" id="securite">
-      <div class="container">
-        <div class="section__head" data-reveal>
-          <h2>Sécurité web, sans blabla</h2>
-          <p>On identifie les risques, on corrige, on met en place des garde‑fous et on prouve.</p>
-        </div>
-
-        <div class="split">
-          <div class="split__left" data-reveal>
-            <div class="steps">
-              <div class="step">
-                <div class="step__n">1</div>
-                <div>
-                  <h3>Audit</h3>
-                  <p>Scan + revue ciblée : auth, injections, XSS, CSRF, config, dépendances.</p>
-                </div>
-              </div>
-              <div class="step">
-                <div class="step__n">2</div>
-                <div>
-                  <h3>Remédiation</h3>
-                  <p>Correctifs priorisés, PRs propres, tests, et validation des fixes.</p>
-                </div>
-              </div>
-              <div class="step">
-                <div class="step__n">3</div>
-                <div>
-                  <h3>Durcissement</h3>
-                  <p>Headers, CSP, gestion des secrets, rate limiting, WAF/CDN si besoin.</p>
-                </div>
-              </div>
-              <div class="step">
-                <div class="step__n">4</div>
-                <div>
-                  <h3>Preuves</h3>
-                  <p>Rapport clair (risque/impact), recommandations et plan de suivi.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <aside class="split__right" data-reveal>
-            <div class="callout">
-              <h3>Pack “Sécurité Express”</h3>
-              <p>Idéal avant une mise en prod ou une campagne marketing.</p>
-              <ul class="list">
-                <li>Audit rapide + points critiques</li>
-                <li>Checklist OWASP + headers</li>
-                <li>Conseils déploiement & monitoring</li>
-              </ul>
-              <div class="callout__actions">
-                <a class="btn btn--ghost" href="#contact">Obtenir le pack</a>
-                <button class="btn" type="button" data-copy-email>
-                  Copier l’email
-                </button>
-              </div>
-              <p class="muted">Réponse sous 24–48h ouvrées.</p>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROCESS -->
-    <section class="section section--alt" id="process">
-      <div class="container">
-        <div class="section__head" data-reveal>
-          <h2>Process clair, livraison propre</h2>
-          <p>Moins de réunions inutiles, plus d’avancement visible.</p>
-        </div>
-
-        <div class="timeline" data-reveal>
-          <div class="titem">
-            <h3>Cadrage</h3>
-            <p>Objectifs, contenu, périmètre, planning et risques.</p>
-          </div>
-          <div class="titem">
-            <h3>Design & dev</h3>
-            <p>Prototype rapide, itérations courtes, code maintenable.</p>
-          </div>
-          <div class="titem">
-            <h3>Qualité</h3>
-            <p>Tests, perf, sécurité, accessibilité. Checklist avant prod.</p>
-          </div>
-          <div class="titem">
-            <h3>Mise en prod</h3>
-            <p>Déploiement automatisé, monitoring, plan de rollback.</p>
-          </div>
-        </div>
-
-        <div class="strip" data-reveal>
-          <div>
-            <h3>Tu veux un site qui inspire confiance ?</h3>
-            <p class="muted">On s’occupe du design, du code et de la sécurité.</p>
-          </div>
-          <a class="btn" href="#contact">Démarrer</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="section__head" data-reveal>
-          <h2>Contact</h2>
-          <p>Dis‑moi ce que tu veux construire. Je réponds rapidement avec une proposition claire.</p>
-        </div>
-
-        <div class="contact">
-          <form class="form" data-form data-reveal>
-            <div class="grid2">
-              <label class="field">
-                <span>Nom</span>
-                <input name="name" autocomplete="name" required placeholder="Ton nom" />
-              </label>
-              <label class="field">
-                <span>Email</span>
-                <input name="email" type="email" autocomplete="email" required placeholder="nom@entreprise.com" />
-              </label>
-            </div>
-
-            <label class="field">
-              <span>Sujet</span>
-              <input name="subject" required placeholder="Ex : refonte site + audit sécurité" />
-            </label>
-
-            <label class="field">
-              <span>Message</span>
-              <textarea name="message" rows="6" required placeholder="Contexte, objectif, délai, budget (si possible)…"></textarea>
-            </label>
-
-            <div class="form__row">
-              <button class="btn" type="submit">Envoyer</button>
-              <p class="muted">En cliquant, ton client mail s’ouvre (mailto). Aucun tracking.</p>
-            </div>
-
-            <p class="form__status" data-form-status role="status" aria-live="polite"></p>
-          </form>
-
-          <aside class="side" data-reveal>
-            <div class="side__box">
-              <h3>Coordonnées</h3>
-              <p class="muted">Remplace par les tiennes :</p>
-              <div class="kv">
-                <div class="kv__row">
-                  <span>Email</span>
-                  <a class="link" href="mailto:JeanValJean@groszeub.com" data-email>JeanValJean@groszeub.com</a>
-                </div>
-                <div class="kv__row">
-                  <span>GitHub</span>
-                  <a class="link" href="https://github.com/stoxor-web/monportfolio" rel="noreferrer">github.com/stoxor-web/monportfolio</a>
-                </div>
-                <div class="kv__row">
-                  <span>Zone</span>
-                  <span>Remote / Ta ville</span>
-                </div>
-              </div>
-              <div class="side__actions">
-                <button class="btn btn--ghost" type="button" data-copy-email>Copier l’email</button>
-                <a class="btn" href="#services">Voir services</a>
-              </div>
-            </div>
-
-            <div class="side__box side__box--mini">
-              <h3>Garantie qualité</h3>
-              <ul class="list">
-                <li>Code propre + documentation</li>
-                <li>Performance & accessibilité</li>
-                <li>Hygiène sécurité par défaut</li>
-              </ul>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer__inner">
-      <p class="muted">© <span data-year></span> STOXOR DEV. Tous droits réservés.</p>
-      <div class="footer__links">
-        <a class="link" href="#top">Haut ↑</a>
-        <a class="link" href="#contact">Contact</a>
-      </div>
-    </div>
-  </footer>
-
-  <div class="toast" data-toast role="status" aria-live="polite" aria-atomic="true"></div>
-
-  <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </body>
 </html>
