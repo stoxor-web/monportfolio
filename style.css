@@ -129,10 +129,15 @@ button:focus, a:focus {
 .project-card {
     overflow: hidden;
     box-shadow: 0 0 0 1px var(--border-color); 
-    border-radius: 5px; /* Reste rectangulaire */
+    border-radius: 5px; 
+    /* Ajout de padding interne pour l'esthétique du contenu */
+    padding: 0; 
 }
 .project-card:hover {
     box-shadow: 0 0 10px var(--accent), 0 0 0 1px var(--accent); 
+}
+.project-info {
+    padding: 20px; /* Ajout du padding pour le contenu interne */
 }
 .project-info h3 { font-size: 1.2rem; }
 .tag { 
@@ -161,8 +166,8 @@ button:focus, a:focus {
 .testimonial-card { 
     width: 350px; flex-shrink: 0; position: relative; 
     border: 1px solid var(--border-color); 
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.4); /* Ombre intérieure subtile */
-    border-radius: 5px; /* Rectangulaire */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.4); 
+    border-radius: 5px; 
 }
 .testimonial-card:hover {
     border-color: var(--primary);
