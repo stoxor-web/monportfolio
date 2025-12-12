@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 3: Dashboard IOT & Conception | STOXOR</title>
+    <!-- Le lien vers le CSS doit être adapté car le fichier est dans le sous-dossier 'pages' -->
+    <link rel="stylesheet" href="../style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Styles spécifiques à la page de détail -->
+    <style>
+        .project-detail-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 20px;
+            min-height: 80vh;
+        }
+        .project-header {
+            text-align: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
+        .project-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: var(--primary); 
+            font-family: 'Roboto Mono', monospace;
+        }
+        .project-header p {
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+        
+        /* Liste des étapes de conception */
+        .design-steps {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+        .design-steps li {
+            background: var(--bg-alt);
+            padding: 15px;
+            border-left: 4px solid var(--primary);
+            margin-bottom: 10px;
+            border-radius: 3px;
+        }
+        .design-steps li strong {
+            color: var(--primary);
+            font-family: 'Roboto Mono', monospace;
+            margin-right: 10px;
+        }
+        
+        /* Blocs d'illustration (simulés) */
+        .illustration-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+            color: var(--accent);
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.2rem;
+            border-radius: 5px;
+        }
+
+        /* Bouton Retour */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 30px;
+            text-decoration: none;
+            color: var(--text-muted);
+        }
+        .back-button:hover {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body class="dark-mode">
+
+    <!-- CONTENU DE LA PAGE DE DÉTAIL -->
+    <div class="project-detail-content">
+        
+        <a href="../index.html#projets" class="back-button">
+            <i class="fas fa-arrow-left" style="margin-right: 10px;"></i> Retour aux projets
+        </a>
+
+        <div class="project-header">
+            <h1>Dashboard IOT pour l'Industrie</h1>
+            <p>Conception UX/UI de tableaux de bord pour la visualisation de données en temps réel.</p>
+        </div>
+
+        <section>
+            <div class="section-title">Défi de Conception</div>
+            <p>Le défi principal de ce projet était de transformer des flux de données IOT (Internet des Objets) complexes (température, pression, vibration) en un tableau de bord intuitif et actionnable. L'interface devait minimiser la fatigue visuelle et alerter efficacement l'utilisateur en cas d'anomalie critique.</p>
+        </section>
+
+        <section>
+            <div class="section-title">Processus UX/UI</div>
+            <p>Nous avons suivi un cycle de conception centré sur l'utilisateur, adapté aux besoins des opérateurs industriels :</p>
+
+            <ul class="design-steps">
+                <li><strong>Wireframing :</strong> Création de structures basse fidélité pour définir l'architecture de l'information.</li>
+                <li><strong>Prototypage :</strong> Réalisation de maquettes interactives pour tester les flux d'alertes et la navigation.</li>
+                <li><strong>Design System :</strong> Création d'une bibliothèque de composants réutilisables (cartes, graphiques, boutons) pour la cohérence.</li>
+                <li><strong>Test d'Utilisabilité :</strong> Validation des choix de design auprès d'un panel d'opérateurs pour affiner l'ergonomie.</li>
+            </ul>
+        </section>
+
+        <section>
+            <div class="section-title">Visualisation des Données</div>
+            <p>La clé du succès réside dans la clarté. L'utilisation de couleurs d'accentuation (Vert pour OK, Cyan pour Alerte, Rouge pour Critique) a été essentielle pour la lecture rapide.</p>
+            
+            <div class="illustration-block">
+                [ Maquette de Carte de Données IOT (Vitesse & Température) ]
+            </div>
+            <p>L'interface a été conçue pour être "responsive", permettant une consultation efficace même sur tablette lors des déplacements dans l'usine.</p>
+        </section>
+
+        <section>
+            <div class="section-title">Conclusion et Impact</div>
+            <p>Le nouveau Dashboard IOT a réduit le temps de réponse aux anomalies critiques de 40% grâce à une hiérarchie visuelle claire et des notifications ciblées. Ce projet démontre ma capacité à concevoir des solutions où l'esthétique soutient directement la fonction et la performance technique.</p>
+        </section>
+
+    </div>
+
+</body>
+</html>
