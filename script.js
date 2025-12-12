@@ -1,6 +1,62 @@
-console.log("Portfolio Expert + Typewriter chargé !");
+console.log("Site chargé - Mode Expert Actif");
 
-// 1. GESTION MENU MOBILE
+// --- 1. GESTION DU MODE SOMBRE (DARK MODE) ---
+const themeToggle = document.getElementById('theme-toggle');
+const htmlElement = document.documentElement;
+const icon = themeToggle.querySelector('i');
+
+// Vérifier si l'utilisateur avait déjà choisi un thème
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    htmlElement.setAttribute('data-theme', savedTheme);
+    updateIcon(savedTheme);
+}
+
+themeToggle.addEventListener('click', () => {
+    // Basculer entre light et dark
+    const currentTheme = htmlElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    htmlElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme); // Sauvegarder le choix
+    updateIcon(newTheme);
+});
+
+function updateIcon(theme) {
+    if (theme === 'dark') {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun'); // Afficher le soleil en mode sombre
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon'); // Afficher la lune en mode clair
+    }
+}
+
+// --- 2. NAVIGATION INTELLIGENTE (SCROLL SPY) ---
+const sections = document.querySelectorAll('section, header');
+const navLinks = document.querySelectorAll('.nav-link');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        // On active la section quand on a scrollé un tiers dedans
+        if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// --- 3. MENU MOBILE ---
 const mobileMenu = document.getElementById('mobile-menu');
 const navList = document.querySelector('.nav-list');
 
@@ -9,14 +65,13 @@ if (mobileMenu) {
         navList.classList.toggle('active');
     });
 }
-
 document.querySelectorAll('.nav-list a').forEach(link => {
     link.addEventListener('click', () => {
         navList.classList.remove('active');
     });
 });
 
-// 2. FILTRES PORTFOLIO
+// --- 4. FILTRES PORTFOLIO ---
 const filterButtons = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card');
 
@@ -29,44 +84,14 @@ filterButtons.forEach(button => {
         projectCards.forEach(card => {
             if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
                 card.style.display = 'block';
-                setTimeout(() => card.style.opacity = '1', 10);
             } else {
                 card.style.display = 'none';
-                card.style.opacity = '0';
             }
         });
     });
 });
 
-// 3. BOUTON RETOUR HAUT
-const backToTopButton = document.getElementById('back-to-top');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        backToTopButton.classList.add('show');
-    } else {
-        backToTopButton.classList.remove('show');
-    }
-});
-
-// 4. ANIMATION AU SCROLL
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-});
-
-document.querySelectorAll('section, .card, .project-card, .testimonial-card').forEach((el) => {
-    el.style.opacity = 0;
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'all 0.6s ease-out';
-    observer.observe(el);
-});
-
-// 5. EFFET MACHINE À ÉCRIRE (TYPEWRITER)
+// --- 5. TYPEWRITER EFFECT ---
 const TypeWriter = function(txtElement, words, wait = 3000) {
     this.txtElement = txtElement;
     this.words = words;
@@ -89,32 +114,34 @@ TypeWriter.prototype.type = function() {
 
     this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
 
-    let typeSpeed = 100; // Vitesse d'écriture normale
+    let typeSpeed = 100;
 
-    if(this.isDeleting) {
-        typeSpeed /= 2; // Efface plus vite
-    }
+    if(this.isDeleting) { typeSpeed /= 2; }
 
     if(!this.isDeleting && this.txt === fullTxt) {
-        typeSpeed = this.wait; // Pause quand le mot est fini
+        typeSpeed = this.wait;
         this.isDeleting = true;
     } else if(this.isDeleting && this.txt === '') {
         this.isDeleting = false;
         this.wordIndex++;
-        typeSpeed = 500; // Petite pause avant de réécrire
+        typeSpeed = 500;
     }
 
     setTimeout(() => this.type(), typeSpeed);
 }
 
-// Initialisation au chargement de la page
-document.addEventListener('DOMContentLoaded', init);
-
-function init() {
+document.addEventListener('DOMContentLoaded', () => {
     const txtElement = document.querySelector('.txt-type');
     if (txtElement) {
         const words = JSON.parse(txtElement.getAttribute('data-words'));
         const wait = txtElement.getAttribute('data-wait');
         new TypeWriter(txtElement, words, wait);
     }
-}
+});
+
+// --- 6. RETOUR HAUT ---
+const backToTop = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) backToTop.classList.add('show');
+    else backToTop.classList.remove('show');
+});

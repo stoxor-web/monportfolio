@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta SEO de base -->
+    <meta name="description" content="Portfolio Développeur Web & Designer. Création de sites sur-mesure.">
     <title>Mon Portfolio - Solutions Digitales</title>
-    <!-- Lien vers le fichier CSS -->
     <link rel="stylesheet" href="style.css">
-    <!-- Icônes FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Favicon (à ajouter si vous en avez un) -->
+    <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
 </head>
 <body>
 
@@ -17,25 +19,35 @@
     <!-- NAVIGATION -->
     <nav>
         <div class="logo">Mon<span class="highlight">Portfolio</span>.</div>
-        <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+        
+        <div class="nav-right">
+            <!-- Bouton Mode Sombre (NOUVEAU) -->
+            <button id="theme-toggle" aria-label="Changer de thème">
+                <i class="fas fa-moon"></i>
+            </button>
+
+            <!-- Menu Burger -->
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
+
         <ul class="nav-list">
-            <li><a href="#accueil">Accueil</a></li>
-            <li><a href="#competences">Expertises</a></li>
-            <li><a href="#projets">Projets</a></li>
-            <li><a href="#avis">Avis Clients</a></li>
+            <li><a href="#accueil" class="nav-link active">Accueil</a></li>
+            <li><a href="#competences" class="nav-link">Expertises</a></li>
+            <li><a href="#projets" class="nav-link">Projets</a></li>
+            <li><a href="#avis" class="nav-link">Avis</a></li>
             <li><a href="#contact" class="btn-devis">Me contacter</a></li>
         </ul>
     </nav>
 
-    <!-- HERO SECTION (AVEC EFFET MACHINE À ÉCRIRE) -->
+    <!-- HERO SECTION -->
     <header id="accueil">
         <div class="overlay"></div>
         <div class="content">
-            <h1>Je suis <span class="txt-type" data-wait="2000" data-words='["Développeur Web", "Designer UI/UX", "Freelance", "Créateur de Solutions"]'></span></h1>
+            <h1>Je suis <span class="txt-type" data-wait="2000" data-words='["Développeur Web", "Designer UI/UX", "Freelance"]'></span></h1>
             <p>Transformez votre vision en réalité digitale performante.</p>
             
             <div class="dispo-badge">
@@ -71,8 +83,8 @@
         </div>
     </section>
 
-    <!-- PROJETS AVEC FILTRES -->
-    <section id="projets" class="bg-light">
+    <!-- PROJETS -->
+    <section id="projets" class="bg-alt">
         <h2>Mes Réalisations</h2>
         
         <div class="filter-container">
@@ -83,7 +95,6 @@
         </div>
 
         <div class="grid-container project-grid">
-            <!-- Projet 1 -->
             <div class="project-card" data-category="web">
                 <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
                 <div class="project-info">
@@ -92,7 +103,6 @@
                     <a href="#" class="project-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <!-- Projet 2 -->
             <div class="project-card" data-category="mobile">
                 <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
                 <div class="project-info">
@@ -101,7 +111,6 @@
                     <a href="#" class="project-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <!-- Projet 3 -->
             <div class="project-card" data-category="design">
                 <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
                 <div class="project-info">
@@ -113,13 +122,13 @@
         </div>
     </section>
 
-    <!-- TÉMOIGNAGES (AVIS CLIENTS) -->
+    <!-- AVIS CLIENTS -->
     <section id="avis">
         <h2>Ce que disent mes clients</h2>
         <div class="grid-container">
             <div class="testimonial-card">
                 <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                <p>"Un travail exceptionnel. Le site est rapide, beau et mes ventes ont augmenté de 30% depuis la refonte."</p>
+                <p>"Un travail exceptionnel. Le site est rapide, beau et mes ventes ont augmenté de 30%."</p>
                 <div class="author">
                     <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
                     <div>
@@ -130,7 +139,7 @@
             </div>
             <div class="testimonial-card">
                 <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                <p>"Très professionnel et réactif. Il a su comprendre mes besoins et livrer le projet en avance."</p>
+                <p>"Très professionnel et réactif. Il a su comprendre mes besoins parfaitement."</p>
                 <div class="author">
                     <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client">
                     <div>
@@ -139,24 +148,12 @@
                     </div>
                 </div>
             </div>
-            <div class="testimonial-card">
-                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                <p>"Je recommande vivement. Une expertise technique impressionnante et un très bon sens du design."</p>
-                <div class="author">
-                    <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Client">
-                    <div>
-                        <h4>Thomas Bernard</h4>
-                        <span>Directeur, Agency One</span>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="bg-dark">
+    <section id="contact" class="bg-dark-section">
         <h2>Discutons de votre projet</h2>
-        <!-- N'oubliez pas de mettre votre ID Formspree ici -->
         <form action="https://formspree.io/f/VOTRE_ID_ICI" method="POST">
             <div class="form-row">
                 <input type="text" name="name" placeholder="Votre Nom" required>
@@ -166,7 +163,7 @@
                 <option>Je souhaite...</option>
                 <option>Créer un site vitrine</option>
                 <option>Créer une boutique en ligne</option>
-                <option>Refaire mon design</option>
+                <option>Autre</option>
             </select>
             <textarea name="message" rows="5" placeholder="Détails du projet..." required></textarea>
             <button type="submit">Envoyer <i class="fas fa-paper-plane"></i></button>
@@ -178,31 +175,20 @@
         <div class="footer-content">
             <div class="footer-col">
                 <h3>Mon<span class="highlight">Portfolio</span>.</h3>
-                <p>Création de solutions web sur mesure pour entreprises ambitieuses.</p>
+                <p>Création de solutions web sur mesure.</p>
                 <div class="socials">
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="footer-col">
-                <h3>Liens Rapides</h3>
-                <ul>
-                    <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#projets">Projets</a></li>
-                    <li><a href="#avis">Témoignages</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
                 <h3>Contact</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Paris, France</p>
-                <p><i class="fas fa-envelope"></i> contact@email.com</p>
-                <p><i class="fas fa-phone"></i> +33 6 00 00 00 00</p>
+                <p>contact@email.com</p>
+                <p>+33 6 00 00 00 00</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 MonPortfolio. Tous droits réservés.</p>
+            <p>&copy; 2025 MonPortfolio.</p>
         </div>
     </footer>
 
