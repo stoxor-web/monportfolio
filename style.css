@@ -130,14 +130,13 @@ button:focus, a:focus {
     overflow: hidden;
     box-shadow: 0 0 0 1px var(--border-color); 
     border-radius: 5px; 
-    /* Ajout de padding interne pour l'esthétique du contenu */
     padding: 0; 
 }
 .project-card:hover {
     box-shadow: 0 0 10px var(--accent), 0 0 0 1px var(--accent); 
 }
 .project-info {
-    padding: 20px; /* Ajout du padding pour le contenu interne */
+    padding: 20px; 
 }
 .project-info h3 { font-size: 1.2rem; }
 .tag { 
@@ -186,7 +185,11 @@ button:focus, a:focus {
 
 /* --- CONTACT / FORMULAIRE (OPTIMISÉ) --- */
 .bg-dark-section { background: var(--bg-contact); color: var(--text-main); padding: 6rem 10%; border-top: 1px solid var(--border-color); }
-form { max-width: 700px; margin: 0 auto; }
+form { 
+    max-width: 700px; 
+    margin: 0 auto; 
+    text-align: center; /* CENTRAGE DU BOUTON ET DES ÉLÉMENTS DE FORMULAIRE */
+}
 
 /* Champs de saisie optimisés */
 input, select, textarea { 
@@ -194,14 +197,25 @@ input, select, textarea {
     border: 1px solid var(--border-color); 
     border-radius: 5px; color: var(--text-main); 
     font-family: 'Inter', sans-serif;
+    text-align: left; /* Réaligne le texte des champs à gauche */
 }
 input:focus, textarea:focus {
     outline: none;
     border-color: var(--primary); /* Vert Électrique au focus */
 }
 
-.success-message { background: var(--accent); color: var(--bg-body); }
-button { background: var(--primary); color: var(--bg-body); cursor: pointer; }
+/* Le bouton a besoin d'une largeur définie pour être centré */
+button { 
+    width: 50%; /* Largeur réduite pour pouvoir être centré */
+    max-width: 300px; /* Limite la taille sur très grand écran */
+    margin: 20px auto 0; /* Centrage horizontal */
+    
+    background: var(--primary); color: var(--bg-body); cursor: pointer;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 700;
+}
 button:hover { background: var(--primary-hover); }
 
 /* --- FOOTER (OPTIMISÉ) --- */
@@ -254,4 +268,11 @@ footer {
         gap: 30px; 
     }
     h1 { font-size: 2.5rem; }
+    
+    /* Bouton plein largeur sur mobile */
+    button {
+        width: 100%; 
+        max-width: none;
+        margin: 20px 0 0;
+    }
 }
