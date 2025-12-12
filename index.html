@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Nom - Développeur & Solutions Informatiques</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">MonEntreprise</div>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#competences">Compétences</a></li>
+            <li><a href="#tarifs">Tarifs</a></li>
+            <li><a href="#contact" class="btn-devis">Demander un devis</a></li>
+        </ul>
+    </nav>
+
+    <header id="accueil">
+        <div class="content">
+            <h1>Expert en Solutions Informatiques</h1>
+            <p>Je transforme vos idées en réalité numérique.</p>
+            
+            <div class="dispo-badge disponible">
+                <span class="dot"></span> Actuellement disponible
+            </div>
+            
+            <a href="#contact" class="cta-button">Me contacter</a>
+        </div>
+    </header>
+
+    <section id="competences">
+        <h2>Mes Expertises</h2>
+        <div class="grid-container">
+            <div class="card">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Développement Web</h3>
+                <p>HTML5, CSS3, JavaScript. Création de sites vitrines et responsive.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-server"></i>
+                <h3>Maintenance</h3>
+                <p>Mise à jour, sécurisation et optimisation de vos systèmes.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-search"></i>
+                <h3>SEO & Audit</h3>
+                <p>Optimisation pour les moteurs de recherche et audit technique.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tarifs">
+        <h2>Tarifs & Forfaits</h2>
+        <div class="pricing-table">
+            <div class="price-card">
+                <h3>Taux Horaire</h3>
+                <p class="price">50€ / h</p>
+                <ul>
+                    <li>Intervention rapide</li>
+                    <li>Débogage</li>
+                    <li>Consulting</li>
+                </ul>
+            </div>
+            <div class="price-card featured">
+                <h3>Site Vitrine</h3>
+                <p class="price">à partir de 800€</p>
+                <ul>
+                    <li>Design personnalisé</li>
+                    <li>5 pages</li>
+                    <li>Optimisé Mobile</li>
+                    <li>Formulaire de contact</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Demande de devis / Contact</h2>
+        <p>Parlez-moi de votre projet. Réponse sous 24h.</p>
+        
+        <form action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST">
+            <div class="form-group">
+                <label>Nom complet</label>
+                <input type="text" name="name" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label>Type de projet</label>
+                <select name="sujet">
+                    <option>Création de site</option>
+                    <option>Refonte</option>
+                    <option>Maintenance</option>
+                    <option>Autre</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Message</label>
+                <textarea name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit">Envoyer la demande</button>
+        </form>
+        
+        <div class="footer-info">
+            <p>📍 Amiens, France | 📧 contact@monmail.com | 📞 06 00 00 00 00</p>
+            <p>SIRET : 123 456 789 00000</p>
+        </div>
+    </section>
+
+</body>
+</html>
