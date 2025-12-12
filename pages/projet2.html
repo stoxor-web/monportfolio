@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 2: Audit de Code et Sécurité Web | STOXOR</title>
+    <!-- Le lien vers le CSS doit être adapté car le fichier est dans le sous-dossier 'pages' -->
+    <link rel="stylesheet" href="../style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Styles spécifiques à la page de détail -->
+    <style>
+        .project-detail-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 20px;
+            min-height: 80vh;
+        }
+        .project-header {
+            text-align: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
+        .project-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: var(--primary); 
+            font-family: 'Roboto Mono', monospace;
+        }
+        .project-header p {
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+        
+        /* Styles des blocs de code et alertes */
+        .code-block {
+            background: #000000;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--primary);
+            padding: 15px;
+            margin: 20px 0;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        .vulnerability-list {
+            list-style: none;
+            padding-left: 20px;
+        }
+        .vulnerability-list li {
+            margin-bottom: 10px;
+            padding-left: 10px;
+            border-left: 3px solid var(--accent);
+        }
+
+        /* Indicateur de risque */
+        .risk-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg-body);
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-right: 15px;
+        }
+        .risk-badge.critical {
+            background: #FF4500; /* Orange Vif */
+        }
+
+        /* Bouton Retour */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 30px;
+            text-decoration: none;
+            color: var(--text-muted);
+        }
+        .back-button:hover {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body class="dark-mode">
+
+    <!-- CONTENU DE LA PAGE DE DÉTAIL -->
+    <div class="project-detail-content">
+        
+        <a href="../index.html#projets" class="back-button">
+            <i class="fas fa-arrow-left" style="margin-right: 10px;"></i> Retour aux projets
+        </a>
+
+        <div class="project-header">
+            <h1>Audit de Code et Sécurité Web</h1>
+            <p>Analyse complète des failles critiques et remédiation (OWASP Top 10).</p>
+        </div>
+
+        <section>
+            <div class="section-title">Contexte et Méthodologie</div>
+            <p>L'objectif était d'évaluer la sécurité d'une application existante (e-commerce) avant son déploiement à grande échelle. L'audit a suivi la méthodologie standard de l'**OWASP Top 10** pour identifier les risques les plus courants et les plus sévères.</p>
+            <p>Nous avons combiné deux approches essentielles :</p>
+            <ul class="vulnerability-list">
+                <li><span style="color: var(--primary);">Analyse Statique :</span> Examen du code source sans exécution (recherche de patterns de vulnérabilité).</li>
+                <li><span style="color: var(--primary);">Analyse Dynamique :</span> Tests d'intrusion en conditions réelles (injection, failles de session).</li>
+            </ul>
+        </section>
+
+        <section>
+            <div class="section-title">Failles Critiques Découvertes</div>
+            <p>L'audit a révélé plusieurs failles de sécurité, classées par niveau de risque :</p>
+
+            <ul class="vulnerability-list">
+                <li><span class="risk-badge critical">CRITIQUE</span> 
+                    <strong>A01: Broken Access Control :</strong> Un utilisateur non authentifié pouvait accéder aux données client via la modification d'un paramètre d'URL.
+                </li>
+                <li><span class="risk-badge">ÉLEVÉ</span> 
+                    <strong>A03: Injection SQL Potentielle :</strong> Absence de requêtes préparées dans le module de recherche de produits.
+                </li>
+                <li><span class="risk-badge">MOYEN</span> 
+                    <strong>A07: Cross-Site Scripting (XSS) :</strong> Possibilité d'injection via le champ de commentaire sans sanitization adéquate.
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <div class="section-title">Exemple de Code Vulnérable (Simplifié)</div>
+            <p>Voici un extrait du code vulnérable (simulé) et la recommandation de remédiation :</p>
+            
+            <p style="color: var(--accent); margin-top: 10px;">Code Vulnérable (JavaScript côté serveur):</p>
+            <div class="code-block">
+                <span>const userId = req.query.id;</span><br>
+                <span>db.query(`SELECT * FROM users WHERE id = ${userId}`); // Injection possible ici</span>
+            </div>
+            
+            <p style="color: var(--accent); margin-top: 20px;">Recommandation (Requête Préparée):</p>
+            <div class="code-block" style="border-left-color: #2ecc71;">
+                <span>const userId = req.query.id;</span><br>
+                <span>db.query('SELECT * FROM users WHERE id = $1', [userId]); // Sûr et paramétré</span>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Résultats et Conclusion</div>
+            <p>Grâce aux correctifs appliqués, le score de sécurité de l'application est passé de C (Faible) à A+ (Excellent). Les développeurs ont été formés aux pratiques de codage sécurisé (Secure Coding) pour prévenir les récidives. Ce projet illustre l'importance d'intégrer la sécurité dès les premières étapes du cycle de développement.</p>
+        </section>
+
+    </div>
+
+</body>
+</html>
