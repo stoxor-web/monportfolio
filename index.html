@@ -17,9 +17,8 @@
     <nav>
         <div class="logo">Mon<span class="highlight">Portfolio</span>.</div>
         
-        <!-- Les contrôles sont déplacés AVANT la liste de navigation pour s'assurer qu'ils sont à droite sur le bureau -->
         <div class="nav-right-controls">
-            <!-- Bouton Mode Sombre (Positionné ici) -->
+            <!-- Bouton Mode Sombre -->
             <button id="theme-toggle" aria-label="Changer de thème">
                 <i class="fas fa-moon"></i>
             </button>
@@ -64,18 +63,19 @@
     <!-- COMPÉTENCES -->
     <section id="competences">
         <h2>Mes Domaines d'Expertise</h2>
-        <div class="grid-container">
-            <div class="card">
+        <div class="grid-container" id="competences-grid">
+            <!-- Ajout des classes pour l'animation staggered et l'effet 3D -->
+            <div class="card stagger-item hover-3d" data-index="0">
                 <i class="fas fa-laptop-code"></i>
                 <h3>Développement Web</h3>
                 <p>Sites vitrines, E-commerce, Dashboards. Code propre et optimisé.</p>
             </div>
-            <div class="card">
+            <div class="card stagger-item hover-3d" data-index="1">
                 <i class="fas fa-paint-brush"></i>
                 <h3>UI/UX Design</h3>
                 <p>Maquettes modernes, parcours utilisateur fluide et identité visuelle.</p>
             </div>
-            <div class="card">
+            <div class="card stagger-item hover-3d" data-index="2">
                 <i class="fas fa-search-dollar"></i>
                 <h3>SEO & Audit</h3>
                 <p>Amélioration de votre visibilité sur Google et de la vitesse du site.</p>
@@ -95,8 +95,8 @@
         </div>
 
         <div class="grid-container project-grid">
-            <!-- Ajout des data-img pour Lazy Loading via JS -->
-            <div class="project-card lazy-load-img" data-category="web" data-img="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+            <!-- Ajout des classes stagger-item pour l'animation -->
+            <div class="project-card lazy-load-img stagger-item hover-3d" data-category="web" data-img="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" data-index="3">
                 <div class="project-image"></div>
                 <div class="project-info">
                     <span class="tag">Site Web</span>
@@ -104,7 +104,7 @@
                     <a href="#" class="project-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="project-card lazy-load-img" data-category="mobile" data-img="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+            <div class="project-card lazy-load-img stagger-item hover-3d" data-category="mobile" data-img="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" data-index="4">
                 <div class="project-image"></div>
                 <div class="project-info">
                     <span class="tag">App Mobile</span>
@@ -112,7 +112,7 @@
                     <a href="#" class="project-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="project-card lazy-load-img" data-category="design" data-img="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+            <div class="project-card lazy-load-img stagger-item hover-3d" data-category="design" data-img="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" data-index="5">
                 <div class="project-image"></div>
                 <div class="project-info">
                     <span class="tag">Design</span>
@@ -194,6 +194,11 @@
     <!-- CONTACT -->
     <section id="contact" class="bg-dark-section">
         <h2>Discutons de votre projet</h2>
+        <!-- Conteneur pour le message de succès -->
+        <div id="form-success-message" class="success-message" style="display: none;">
+            <i class="fas fa-check-circle"></i> Votre message a été envoyé avec succès ! Je reviens vers vous rapidement.
+        </div>
+
         <!-- N'oubliez pas de remplacer VOTRE_ID_ICI par votre ID Formspree -->
         <form id="contact-form" action="https://formspree.io/f/VOTRE_ID_ICI" method="POST">
             <div class="form-row">

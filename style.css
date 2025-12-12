@@ -2,12 +2,9 @@
 
 /* --- VARIABLES DE THÈMES --- */
 :root {
-    /* Couleurs fixes */
     --primary: #4361ee;
     --primary-hover: #3046b5;
     --accent: #f72585;
-    
-    /* Variables dynamiques (Light Mode par défaut) */
     --bg-body: #ffffff;
     --bg-alt: #f8f9fa; 
     --bg-card: #ffffff;
@@ -16,6 +13,8 @@
     --text-muted: #64748b;
     --border-color: #e2e8f0;
     --shadow: 0 10px 30px rgba(0,0,0,0.05);
+    /* Variable pour l'effet 3D */
+    --3d-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 /* Variables Dark Mode */
@@ -28,6 +27,7 @@
     --text-muted: #94a3b8;
     --border-color: #334155;
     --shadow: 0 10px 30px rgba(0,0,0,0.3);
+    --3d-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
@@ -43,84 +43,42 @@ body {
 h1, h2, h3 { font-family: 'Outfit', sans-serif; color: var(--text-main); }
 p { color: var(--text-muted); }
 
-/* --- SUPPRESSION FLÈCHE ET CTA FLOTTANT --- */
-#back-to-top, #floating-cta {
-    display: none !important; 
-}
+/* --- ÉLÉMENTS RETIRÉS --- */
+#back-to-top, #floating-cta { display: none !important; }
 
-
-/* --- NAVIGATION (CORRIGÉE POUR LE BOUTON À DROITE) --- */
+/* --- NAVIGATION --- */
 nav { 
-    display: flex; 
-    align-items: center; 
-    padding: 1.2rem 5%; 
-    background: var(--bg-nav); 
-    backdrop-filter: blur(10px); 
-    position: sticky; top: 0; z-index: 1000; 
+    display: flex; align-items: center; padding: 1.2rem 5%; background: var(--bg-nav); 
+    backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; 
     border-bottom: 1px solid var(--border-color);
 }
 .logo { font-weight: 700; font-size: 1.5rem; color: var(--text-main); }
 .highlight { color: var(--primary); }
 
-/* Conteneur pour le bouton de thème et le burger */
-.nav-right-controls { 
-    display: flex; 
-    align-items: center; 
-    gap: 20px; 
-    /* Pousse tout le contenu qui suit (nav-list) vers la droite */
-    margin-left: auto; 
-} 
+.nav-right-controls { display: flex; align-items: center; gap: 20px; margin-left: auto; order: 2; } 
 
-/* Bouton Theme Toggle (DISCRET ET À DROITE) */
 #theme-toggle {
-    background: transparent; 
-    border: none; 
-    color: var(--text-main); 
-    padding: 10px; 
-    border-radius: 50%;
-    cursor: pointer; 
-    font-size: 1.2rem; 
-    transition: 0.3s;
-    z-index: 1001; 
-    /* Retire la marge gauche automatique si elle était appliquée, mais comme il est à l'intérieur de nav-right-controls, c'est bon */
-    order: 2; /* S'assure que le bouton de thème est avant le menu burger sur desktop/tablette */
+    background: transparent; border: none; color: var(--text-main); 
+    padding: 10px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; transition: 0.3s;
+    z-index: 1001; order: 2; 
 }
-#theme-toggle:hover { 
-    background: var(--bg-alt); 
-    color: var(--primary); 
-}
+#theme-toggle:hover { background: var(--bg-alt); color: var(--primary); }
 
-/* Nav list est placée juste après le logo et est masquée sur mobile */
-.nav-list { 
-    display: flex; 
-    gap: 30px; 
-    list-style: none; 
-    align-items: center; 
-    /* ALIGNEMENT CORRIGÉ: S'assure que la nav list apparaît avant nav-right-controls sur desktop */
-    order: 3; /* Positionne la liste après le logo et les contrôles */
-    margin-left: 30px; /* Ajoute un peu d'espace avec le logo */
-}
-
-/* Scroll Spy */
+.nav-list { display: flex; gap: 30px; list-style: none; align-items: center; order: 3; margin-left: 30px; }
 .nav-list a { text-decoration: none; color: var(--text-main); font-weight: 500; transition: 0.3s; }
 .nav-link.active { color: var(--primary); font-weight: 700; }
 .nav-link:hover { color: var(--primary); }
-
 .btn-devis { background: var(--primary); color: white !important; padding: 10px 25px; border-radius: 50px; }
 .btn-devis:hover { background: var(--primary-hover); transform: translateY(-2px); }
 
 /* --- HERO --- */
 header { 
-    height: 100vh; position: relative; 
-    background: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover fixed; 
+    height: 100vh; position: relative; background: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover fixed; 
     display: flex; align-items: center; justify-content: center; text-align: center; color: white; 
 }
 .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(67, 97, 238, 0.7)); }
 .content { position: relative; z-index: 1; padding: 20px; }
 h1 { font-size: 3.5rem; color: white; min-height: 80px; }
-header p { color: rgba(255,255,255,0.8); }
-
-/* Typewriter */
 .txt-type > .txt { border-right: 3px solid var(--primary); color: #4cc9f0; }
 @keyframes blink { 0% { border-color: transparent; } 50% { border-color: var(--primary); } 100% { border-color: transparent; } }
 
@@ -130,72 +88,81 @@ section { padding: 6rem 10%; }
 h2 { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; position: relative; }
 h2::after { content: ''; display: block; width: 60px; height: 4px; background: var(--primary); margin: 15px auto 0; border-radius: 2px; }
 
-/* --- CARDS & PROJETS --- */
+/* --- EFFET HOVER 3D (NOUVEAU) --- */
+.hover-3d {
+    transform-style: preserve-3d; /* Nécessaire pour l'effet 3D */
+    transform: perspective(1000px); /* Ajoute de la profondeur */
+    transition: transform 0.1s ease-out, box-shadow 0.3s; /* Transition rapide pour la fluidité */
+}
+/* Réinitialise la carte lors du hover pour l'effet */
+.hover-3d:hover {
+    box-shadow: var(--3d-shadow);
+    /* Transform est géré par JavaScript */
+}
+
+/* --- CARTES ET PROJETS --- */
 .card, .project-card, .testimonial-card { 
-    background: var(--bg-card); 
-    border: 1px solid var(--border-color);
-    border-radius: 15px; 
-    box-shadow: var(--shadow);
-    transition: 0.3s;
+    background: var(--bg-card); border: 1px solid var(--border-color);
+    border-radius: 15px; padding: 30px; box-shadow: var(--shadow);
 }
 .card { padding: 30px; }
-
 .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 
-.card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; background: rgba(67,97,238,0.1); width: 80px; height: 80px; line-height: 80px; border-radius: 50%; text-align: center; }
-
-/* Projets */
-.project-card { padding: 0; overflow: hidden; }
-.project-image { 
-    height: 220px; 
-    background-color: var(--border-color); 
-    background-size: cover; 
-    background-position: center; 
-    transition: background-image 0.5s;
+/* --- ANIMATION STAGGERED (INITIAL STATE) --- */
+.stagger-item {
+    opacity: 0;
+    transform: translateY(30px) rotate(2deg);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+/* Cet état est appliqué par le JS après le délai */
+.stagger-item.visible {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
 }
 
-/* Filtres */
-.filter-container { text-align: center; margin-bottom: 40px; }
-.filter-btn { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-main); padding: 8px 20px; border-radius: 30px; cursor: pointer; margin: 0 5px; transition: 0.3s; }
-.filter-btn.active, .filter-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
-
-/* --- TÉMOIGNAGES (SCROLLING ANIMATION) --- */
+/* --- TÉMOIGNAGES (SCROLLING) --- */
 .testimonial-scroller {
     width: 100%; overflow: hidden; position: relative; padding: 20px 0;
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 .testimonial-track {
-    display: flex; gap: 30px; width: max-content;
-    animation: scroll 30s linear infinite;
+    display: flex; gap: 30px; width: max-content; animation: scroll 30s linear infinite;
 }
 .testimonial-track:hover { animation-play-state: paused; }
-.testimonial-card { width: 350px; flex-shrink: 0; padding: 30px; position: relative; }
-.quote-icon { font-size: 2rem; color: rgba(67, 97, 238, 0.2); position: absolute; top: 20px; right: 20px; }
-.author { display: flex; align-items: center; gap: 15px; margin-top: 20px; }
-.author img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
-.author h4 { font-size: 1rem; margin: 0; }
-.author span { font-size: 0.85rem; color: var(--text-muted); }
+.testimonial-card { width: 350px; flex-shrink: 0; position: relative; }
+@keyframes scroll { to { transform: translateX(calc(-50% - 15px)); } }
 
-@keyframes scroll {
-    to { transform: translateX(calc(-50% - 15px)); }
-}
-
-/* --- CONTACT (VALIDATION D'ERREUR) --- */
+/* --- CONTACT / SUCCÈS MESSAGE (NOUVEAU) --- */
 .bg-dark-section { background: #0f172a; color: white; }
 .bg-dark-section h2 { color: white; }
 form { max-width: 700px; margin: 0 auto; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 input, select, textarea { width: 100%; padding: 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white; font-family: inherit; }
 .error-message { color: var(--accent); font-size: 0.85rem; margin-top: 5px; height: 18px; }
-button { width: 100%; padding: 15px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+
+.success-message {
+    background: #2ecc71; /* Vert succès */
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+    transform: translateY(-20px);
+    transition: all 0.5s ease-out;
+    opacity: 0;
+}
+.success-message.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
 
 /* --- FOOTER --- */
 footer { background: #020617; color: #94a3b8; padding: 60px 0 0; }
 
 /* --- MOBILE --- */
-@media (max-width: 900px) { 
-    /* Cache les liens de la navigation sur mobile/tablette */
+@media (max-width: 900px) {
     .nav-list { display: none; } 
     .nav-list.active {
         display: flex; position: fixed; top: 70px; left: 0; 
@@ -204,21 +171,13 @@ footer { background: #020617; color: #94a3b8; padding: 60px 0 0; }
         box-shadow: var(--shadow); border-bottom: 1px solid var(--border-color);
         animation: slideIn 0.3s forwards; z-index: 999;
     }
-    
     .menu-toggle { display: block; cursor: pointer; }
-    
-    /* Le bouton de thème et le burger sont à droite, le logo à gauche */
     nav { justify-content: space-between; }
-    .nav-right-controls { order: 2; margin-left: auto; } /* S'assure que les contrôles sont bien à droite */
+    .nav-right-controls { order: 2; margin-left: auto; } 
     .logo { order: 1; }
-    
-    /* ALIGNEMENT CORRIGÉ: La liste de navigation doit prendre l'ordre 3 (masquée par défaut) */
     .nav-list { order: 3; } 
-    
     .form-row, .footer-content { grid-template-columns: 1fr; }
     h1 { font-size: 2.5rem; }
-    
-    /* Animation mobile pour l'apparition du menu */
     @keyframes slideIn {
         from { transform: translateY(-10px); opacity: 0; }
         to { transform: translateY(0); opacity: 1; }
