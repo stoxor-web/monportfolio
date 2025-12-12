@@ -95,7 +95,7 @@
         </div>
 
         <div class="grid-container project-grid">
-            <!-- Ajout des classes stagger-item pour l'animation -->
+            <!-- Ajout des data-img pour Lazy Loading via JS -->
             <div class="project-card lazy-load-img stagger-item hover-3d" data-category="web" data-img="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" data-index="3">
                 <div class="project-image"></div>
                 <div class="project-info">
@@ -222,9 +222,10 @@
         </form>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (CORRIGÉ) -->
     <footer>
         <div class="footer-content">
+            <!-- COLONNE 1 : Logo et réseaux sociaux -->
             <div class="footer-col">
                 <h3>Mon<span class="highlight">Portfolio</span>.</h3>
                 <p>Création de solutions web sur mesure.</p>
@@ -233,14 +234,27 @@
                     <a href="#"><i class="fab fa-github"></i></a>
                 </div>
             </div>
+            
+            <!-- COLONNE 2 : Liens Rapides (MANQUANTE AUPARAVANT) -->
+            <div class="footer-col">
+                <h3>Liens Rapides</h3>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#competences">Expertises</a></li>
+                    <li><a href="#projets">Projets</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- COLONNE 3 : Contact -->
             <div class="footer-col">
                 <h3>Contact</h3>
-                <p>contact@email.com</p>
-                <p>+33 6 00 00 00 00</p>
+                <p><i class="fas fa-envelope"></i> contact@email.com</p>
+                <p><i class="fas fa-phone"></i> +33 6 00 00 00 00</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 MonPortfolio.</p>
+            <p>&copy; 2025 MonPortfolio. Tous droits réservés.</p>
         </div>
     </footer>
 
