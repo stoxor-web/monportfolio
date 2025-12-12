@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 1: Architecture Backend Optimisée | STOXOR</title>
+    <!-- Le lien vers le CSS doit être adapté car le fichier est dans le sous-dossier 'pages' -->
+    <link rel="stylesheet" href="../style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- J'ajoute un style spécifique à cette page pour les codes blocks -->
+    <style>
+        /* Styles spécifiques pour la page de détail */
+        .project-detail-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 20px;
+            min-height: 80vh;
+        }
+        .project-header {
+            text-align: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
+        .project-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: var(--primary); /* Titre en Vert Électrique */
+            font-family: 'Roboto Mono', monospace;
+        }
+        .project-header p {
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+        
+        /* Styles des blocs de code */
+        .code-block {
+            background: #000000;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--primary);
+            padding: 15px;
+            margin: 20px 0;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        .tech-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .tech-list li {
+            background: var(--bg-alt);
+            color: var(--text-main);
+            border: 1px solid var(--accent);
+            padding: 8px 15px;
+            border-radius: 3px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        /* Bouton Retour */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 30px;
+            text-decoration: none;
+            color: var(--text-muted);
+        }
+        .back-button:hover {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body class="dark-mode">
+
+    <!-- CONTENU DE LA PAGE DE DÉTAIL -->
+    <div class="project-detail-content">
+        
+        <a href="../index.html#projets" class="back-button">
+            <i class="fas fa-arrow-left" style="margin-right: 10px;"></i> Retour aux projets
+        </a>
+
+        <div class="project-header">
+            <h1>Plateforme SaaS B2B</h1>
+            <p>Conception et déploiement d'une architecture backend haute performance.</p>
+        </div>
+
+        <section>
+            <div class="section-title">Résumé et Objectifs</div>
+            <p>Ce projet visait à remplacer un ancien système monolithique par une architecture de microservices évolutive, capable de gérer des millions de requêtes quotidiennes tout en assurant une latence minimale pour les utilisateurs B2B.</p>
+            <p>L'accent a été mis sur la <strong>robustesse</strong>, la <strong>sécurité des données</strong> et la <strong>facilité de déploiement</strong> (CI/CD).</p>
+        </section>
+
+        <section>
+            <div class="section-title">Architecture et Technologies</div>
+            <p>Le système a été divisé en services distincts, communiquant via un bus de messages. Nous avons utilisé un mélange d'APIs REST pour les requêtes synchrones et GraphQL pour optimiser les requêtes client complexes.</p>
+
+            <ul class="tech-list">
+                <li>Architecture Microservices</li>
+                <li>API REST & GraphQL (Apollo)</li>
+                <li>Base de données PostgreSQL (Scalabilité)</li>
+                <li>Redis (Caching & Sessions)</li>
+                <li>Docker & Kubernetes (Déploiement)</li>
+            </ul>
+        </section>
+
+        <section>
+            <div class="section-title">Détail des APIs</div>
+            <p>L'API de gestion des utilisateurs a été implémentée avec une approche "Database-per-Service".</p>
+            <div class="code-block">
+                <span>// Exemple de point de terminaison REST</span><br>
+                <span>GET /api/v1/users/{id}</span><br>
+                <span>Authorization: Bearer [TOKEN]</span><br>
+                <br>
+                <span>// Schéma GraphQL (requête optimisée)</span><br>
+                <span>query getUserData {</span><br>
+                <span>&nbsp;&nbsp;user(id: $id) {</span><br>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;name</span><br>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;projects { title, status }</span><br>
+                <span>&nbsp;&nbsp;}</span><br>
+                <span>}</span>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Optimisation des Performances</div>
+            <p>Grâce à la mise en cache agressive et à l'optimisation des requêtes SQL complexes, nous avons réduit la latence moyenne de 450ms à <strong>85ms</strong>.</p>
+            <p>Un mécanisme de bascule automatique (`failover`) a été mis en place pour garantir une disponibilité de 99.99%.</p>
+        </section>
+
+    </div>
+
+</body>
+</html>
