@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Portfolio - Solutions Digitales</title>
+    <!-- Lien vers le fichier CSS -->
     <link rel="stylesheet" href="style.css">
+    <!-- Icônes FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -24,22 +26,24 @@
             <li><a href="#accueil">Accueil</a></li>
             <li><a href="#competences">Expertises</a></li>
             <li><a href="#projets">Projets</a></li>
-            <li><a href="#avis">Avis Clients</a></li> <!-- NOUVEAU -->
+            <li><a href="#avis">Avis Clients</a></li>
             <li><a href="#contact" class="btn-devis">Me contacter</a></li>
         </ul>
     </nav>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (AVEC EFFET MACHINE À ÉCRIRE) -->
     <header id="accueil">
         <div class="overlay"></div>
         <div class="content">
-            <h1>Expert en création <br><span class="gradient-text">Digitale Sur-Mesure</span></h1>
-            <p>Je transforme votre vision en site web performant et esthétique.</p>
+            <h1>Je suis <span class="txt-type" data-wait="2000" data-words='["Développeur Web", "Designer UI/UX", "Freelance", "Créateur de Solutions"]'></span></h1>
+            <p>Transformez votre vision en réalité digitale performante.</p>
+            
             <div class="dispo-badge">
                 <span class="dot"></span> Disponible pour missions
             </div>
+            
             <div class="hero-buttons">
-                <a href="#projets" class="cta-button primary">Explorer mes travaux</a>
+                <a href="#projets" class="cta-button primary">Voir mes travaux</a>
                 <a href="#contact" class="cta-button secondary">Devis gratuit</a>
             </div>
         </div>
@@ -67,11 +71,10 @@
         </div>
     </section>
 
-    <!-- PROJETS AVEC FILTRES (NOUVEAU) -->
+    <!-- PROJETS AVEC FILTRES -->
     <section id="projets" class="bg-light">
         <h2>Mes Réalisations</h2>
         
-        <!-- Boutons de filtre -->
         <div class="filter-container">
             <button class="filter-btn active" data-filter="all">Tous</button>
             <button class="filter-btn" data-filter="web">Sites Web</button>
@@ -80,7 +83,7 @@
         </div>
 
         <div class="grid-container project-grid">
-            <!-- Projet 1 (Web) -->
+            <!-- Projet 1 -->
             <div class="project-card" data-category="web">
                 <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
                 <div class="project-info">
@@ -89,7 +92,7 @@
                     <a href="#" class="project-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <!-- Projet 2 (Mobile) -->
+            <!-- Projet 2 -->
             <div class="project-card" data-category="mobile">
                 <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
                 <div class="project-info">
@@ -98,7 +101,7 @@
                     <a href="#" class="project-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <!-- Projet 3 (Design) -->
+            <!-- Projet 3 -->
             <div class="project-card" data-category="design">
                 <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
                 <div class="project-info">
@@ -110,7 +113,7 @@
         </div>
     </section>
 
-    <!-- TÉMOIGNAGES (NOUVEAU) -->
+    <!-- TÉMOIGNAGES (AVIS CLIENTS) -->
     <section id="avis">
         <h2>Ce que disent mes clients</h2>
         <div class="grid-container">
@@ -136,12 +139,24 @@
                     </div>
                 </div>
             </div>
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p>"Je recommande vivement. Une expertise technique impressionnante et un très bon sens du design."</p>
+                <div class="author">
+                    <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Client">
+                    <div>
+                        <h4>Thomas Bernard</h4>
+                        <span>Directeur, Agency One</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact" class="bg-dark">
         <h2>Discutons de votre projet</h2>
+        <!-- N'oubliez pas de mettre votre ID Formspree ici -->
         <form action="https://formspree.io/f/VOTRE_ID_ICI" method="POST">
             <div class="form-row">
                 <input type="text" name="name" placeholder="Votre Nom" required>
@@ -158,7 +173,7 @@
         </form>
     </section>
 
-    <!-- FOOTER COMPLET (NOUVEAU) -->
+    <!-- FOOTER -->
     <footer>
         <div class="footer-content">
             <div class="footer-col">

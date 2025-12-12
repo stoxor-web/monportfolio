@@ -23,12 +23,24 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .btn-devis { background: var(--primary); color: white !important; padding: 10px 25px; border-radius: 50px; box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3); }
 .btn-devis:hover { transform: translateY(-2px); background: var(--primary-dark); }
 
-/* --- HERO --- */
+/* --- HERO & TYPEWRITER --- */
 header { height: 100vh; position: relative; background: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover fixed; display: flex; align-items: center; justify-content: center; text-align: center; color: white; }
 .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(67, 97, 238, 0.8)); }
 .content { position: relative; z-index: 1; padding: 20px; }
-h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1; color: white; }
-.gradient-text { background: linear-gradient(to right, #4cc9f0, #f72585); -webkit-background-clip: text; color: transparent; }
+h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1; color: white; min-height: 80px; } /* min-height évite le saut quand le texte change */
+
+/* STYLE MACHINE A ECRIRE */
+.txt-type > .txt {
+    border-right: 3px solid var(--primary); /* Le curseur clignotant */
+    padding-right: 5px;
+    color: #4cc9f0; /* Couleur du texte qui s'écrit */
+}
+@keyframes blink {
+    0% { border-color: transparent; }
+    50% { border-color: var(--primary); }
+    100% { border-color: transparent; }
+}
+
 .hero-buttons { margin-top: 30px; display: flex; gap: 15px; justify-content: center; }
 .cta-button { padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.3s; }
 .primary { background: white; color: var(--primary); }
@@ -60,13 +72,14 @@ h2::after { content: ''; display: block; width: 60px; height: 4px; background: v
 .project-info h3 { margin: 10px 0; }
 .project-link { color: var(--primary); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; }
 
-/* --- EXPERTISES (Icon Box) --- */
+/* --- EXPERTISES --- */
 .card { padding: 40px; border-radius: 15px; text-align: center; background: white; border: 1px solid #eee; transition: 0.3s; }
 .card:hover { border-color: var(--primary); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
 .card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; background: rgba(67,97,238,0.1); width: 80px; height: 80px; line-height: 80px; border-radius: 50%; }
 
-/* --- TÉMOIGNAGES --- */
-.testimonial-card { background: white; padding: 30px; border-radius: 15px; border: 1px solid #eee; position: relative; }
+/* --- TÉMOIGNAGES (Avis Clients) --- */
+.testimonial-card { background: white; padding: 30px; border-radius: 15px; border: 1px solid #eee; position: relative; transition: 0.3s; }
+.testimonial-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
 .quote-icon { font-size: 2rem; color: rgba(67, 97, 238, 0.2); position: absolute; top: 20px; right: 20px; }
 .testimonial-card p { font-style: italic; color: var(--gray); margin-bottom: 20px; }
 .author { display: flex; align-items: center; gap: 15px; }
@@ -107,6 +120,6 @@ footer { background: #0b1120; color: #94a3b8; padding: 60px 0 0; border-top: 1px
     .nav-list { position: fixed; top: 70px; left: -100%; width: 100%; height: auto; background: white; flex-direction: column; padding: 30px; transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
     .nav-list.active { left: 0; }
     .form-row, .footer-content { grid-template-columns: 1fr; }
-    h1 { font-size: 2.5rem; }
+    h1 { font-size: 2.5rem; min-height: auto; } /* Ajustement mobile */
     header { height: auto; padding: 150px 0 100px; }
 }
