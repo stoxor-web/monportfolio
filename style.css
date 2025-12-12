@@ -85,3 +85,5 @@ box-shadow: var(--shadow);
 [data-reveal]{ transition:none; transform:none; }
 .toast{ transition:none; }
 .btn:hover, .iconbtn:hover{ transform:none; }
+}
+}
