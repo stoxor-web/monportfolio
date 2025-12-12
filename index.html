@@ -15,13 +15,18 @@
 
     <!-- BOUTON RETOUR HAUT -->
     <a href="#" id="back-to-top"><i class="fas fa-arrow-up"></i></a>
+    
+    <!-- BOUTON CTA FLOTTANT (NOUVEAU) -->
+    <a href="#contact" id="floating-cta" class="bg-primary">
+        <i class="fas fa-paper-plane"></i> <span class="cta-text">Devis Rapide</span>
+    </a>
 
     <!-- NAVIGATION -->
     <nav>
         <div class="logo">Mon<span class="highlight">Portfolio</span>.</div>
         
         <div class="nav-right-controls">
-            <!-- Bouton Mode Sombre (CORRIGÉ) -->
+            <!-- Bouton Mode Sombre -->
             <button id="theme-toggle" aria-label="Changer de thème">
                 <i class="fas fa-moon"></i>
             </button>
@@ -96,24 +101,25 @@
         </div>
 
         <div class="grid-container project-grid">
-            <div class="project-card" data-category="web">
-                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+            <!-- Ajout des data-img pour Lazy Loading via JS -->
+            <div class="project-card lazy-load-img" data-category="web" data-img="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                <div class="project-image"></div>
                 <div class="project-info">
                     <span class="tag">Site Web</span>
                     <h3>E-commerce Bio</h3>
                     <a href="#" class="project-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="project-card" data-category="mobile">
-                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="project-card lazy-load-img" data-category="mobile" data-img="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                <div class="project-image"></div>
                 <div class="project-info">
                     <span class="tag">App Mobile</span>
                     <h3>Fitness Tracker</h3>
                     <a href="#" class="project-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="project-card" data-category="design">
-                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="project-card lazy-load-img" data-category="design" data-img="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                <div class="project-image"></div>
                 <div class="project-info">
                     <span class="tag">Design</span>
                     <h3>Redesign Banque</h3>
@@ -131,40 +137,29 @@
         <div class="testimonial-scroller">
             <div class="testimonial-track">
                 
-                <!-- GROUPE 1 (Originaux) -->
+                <!-- GROUPE 1 -->
                 <div class="testimonial-card">
                     <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
                     <p>"Un travail exceptionnel. Le site est rapide, beau et mes ventes ont augmenté de 30%."</p>
                     <div class="author">
                         <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
-                        <div>
-                            <h4>Marc Dupont</h4>
-                            <span>CEO, TechStart</span>
-                        </div>
+                        <div><h4>Marc Dupont</h4><span>CEO, TechStart</span></div>
                     </div>
                 </div>
-                
                 <div class="testimonial-card">
                     <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
                     <p>"Très professionnel et réactif. Il a su comprendre mes besoins parfaitement."</p>
                     <div class="author">
                         <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client">
-                        <div>
-                            <h4>Sophie Martin</h4>
-                            <span>Fondatrice, FlowerShop</span>
-                        </div>
+                        <div><h4>Sophie Martin</h4><span>Fondatrice, FlowerShop</span></div>
                     </div>
                 </div>
-
                 <div class="testimonial-card">
                     <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
                     <p>"Je recommande vivement. Une expertise technique impressionnante."</p>
                     <div class="author">
                         <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Client">
-                        <div>
-                            <h4>Thomas Bernard</h4>
-                            <span>Directeur, Agency One</span>
-                        </div>
+                        <div><h4>Thomas Bernard</h4><span>Directeur, Agency One</span></div>
                     </div>
                 </div>
 
@@ -174,34 +169,23 @@
                     <p>"Un travail exceptionnel. Le site est rapide, beau et mes ventes ont augmenté de 30%."</p>
                     <div class="author">
                         <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
-                        <div>
-                            <h4>Marc Dupont</h4>
-                            <span>CEO, TechStart</span>
-                        </div>
+                        <div><h4>Marc Dupont</h4><span>CEO, TechStart</span></div>
                     </div>
                 </div>
-                
                 <div class="testimonial-card">
                     <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
                     <p>"Très professionnel et réactif. Il a su comprendre mes besoins parfaitement."</p>
                     <div class="author">
                         <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client">
-                        <div>
-                            <h4>Sophie Martin</h4>
-                            <span>Fondatrice, FlowerShop</span>
-                        </div>
+                        <div><h4>Sophie Martin</h4><span>Fondatrice, FlowerShop</span></div>
                     </div>
                 </div>
-
                 <div class="testimonial-card">
                     <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
                     <p>"Je recommande vivement. Une expertise technique impressionnante."</p>
                     <div class="author">
                         <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Client">
-                        <div>
-                            <h4>Thomas Bernard</h4>
-                            <span>Directeur, Agency One</span>
-                        </div>
+                        <div><h4>Thomas Bernard</h4><span>Directeur, Agency One</span></div>
                     </div>
                 </div>
 
@@ -213,10 +197,16 @@
     <section id="contact" class="bg-dark-section">
         <h2>Discutons de votre projet</h2>
         <!-- N'oubliez pas de remplacer VOTRE_ID_ICI par votre ID Formspree -->
-        <form action="https://formspree.io/f/VOTRE_ID_ICI" method="POST">
+        <form id="contact-form" action="https://formspree.io/f/VOTRE_ID_ICI" method="POST">
             <div class="form-row">
-                <input type="text" name="name" placeholder="Votre Nom" required>
-                <input type="email" name="email" placeholder="Votre Email" required>
+                <div class="form-group">
+                    <input type="text" name="name" id="name" placeholder="Votre Nom" required>
+                    <p class="error-message" id="name-error"></p>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" id="email" placeholder="Votre Email" required>
+                    <p class="error-message" id="email-error"></p>
+                </div>
             </div>
             <select name="sujet">
                 <option>Je souhaite...</option>

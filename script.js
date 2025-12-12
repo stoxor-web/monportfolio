@@ -1,10 +1,9 @@
-console.log("Site chargé - Mode Expert Actif");
+console.log("Site chargé - Lazy Loading & Validation actifs");
 
 // --- 1. GESTION DU MODE SOMBRE (DARK MODE) ---
 const themeToggle = document.getElementById('theme-toggle');
 const htmlElement = document.documentElement;
 
-// Fonction pour mettre à jour l'icône
 function updateIcon(theme) {
     if (!themeToggle) return;
     const icon = themeToggle.querySelector('i');
@@ -12,24 +11,16 @@ function updateIcon(theme) {
 
     if (theme === 'dark') {
         icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun'); // Afficher le soleil en mode sombre
+        icon.classList.add('fa-sun');
     } else {
         icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon'); // Afficher la lune en mode clair
+        icon.classList.add('fa-moon');
     }
 }
 
-// Initialisation au chargement de la page
 const savedTheme = localStorage.getItem('theme');
 let initialTheme = 'light';
-
-if (savedTheme) {
-    initialTheme = savedTheme;
-} 
-// Optionnel: Détecter le thème système pour la première visite
-/* else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    initialTheme = 'dark';
-} */
+if (savedTheme) { initialTheme = savedTheme; }
 
 htmlElement.setAttribute('data-theme', initialTheme);
 updateIcon(initialTheme);
@@ -37,28 +28,92 @@ updateIcon(initialTheme);
 
 if (themeToggle) {
     themeToggle.addEventListener('click', () => {
-        // Basculer entre light et dark
         const currentTheme = htmlElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
         
         htmlElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme); // Sauvegarder le choix
+        localStorage.setItem('theme', newTheme);
         updateIcon(newTheme);
     });
 }
 
+// --- 2. LAZY LOADING DES IMAGES DE PROJET (NOUVEAU) ---
+// Utilisation de l'API Intersection Observer pour ne charger l'image que lorsqu'elle est visible
+const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const card = entry.target;
+            const imgUrl = card.getAttribute('data-img');
+            const projectImageDiv = card.querySelector('.project-image');
+            
+            if (imgUrl) {
+                // Charge l'image en définissant le background
+                projectImageDiv.style.backgroundImage = `url('${imgUrl}')`;
+                card.classList.remove('lazy-load-img');
+            }
+            // Arrête d'observer cet élément une fois qu'il est chargé
+            observer.unobserve(card);
+        }
+    });
+}, { threshold: 0.1 }); // Commence à charger 10% avant l'apparition
 
-// --- 2. NAVIGATION INTELLIGENTE (SCROLL SPY) ---
+document.querySelectorAll('.lazy-load-img').forEach(card => {
+    lazyLoadObserver.observe(card);
+});
+
+
+// --- 3. VALIDATION DE FORMULAIRE (NOUVEAU) ---
+const contactForm = document.getElementById('contact-form');
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+const nameError = document.getElementById('name-error');
+const emailError = document.getElementById('email-error');
+
+function validateName() {
+    if (nameInput.value.length < 2) {
+        nameError.textContent = "Le nom doit contenir au moins 2 caractères.";
+        return false;
+    }
+    nameError.textContent = "";
+    return true;
+}
+
+function validateEmail() {
+    // Regex simple pour la validation d'email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailInput.value)) {
+        emailError.textContent = "Veuillez entrer une adresse email valide.";
+        return false;
+    }
+    emailError.textContent = "";
+    return true;
+}
+
+if (nameInput) nameInput.addEventListener('input', validateName);
+if (emailInput) emailInput.addEventListener('input', validateEmail);
+
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        const isNameValid = validateName();
+        const isEmailValid = validateEmail();
+
+        if (!isNameValid || !isEmailValid) {
+            e.preventDefault(); // Bloque l'envoi si la validation échoue
+            alert("Veuillez corriger les erreurs dans le formulaire avant d'envoyer.");
+        }
+    });
+}
+
+// --- 4. NAVIGATION INTELLIGENTE (SCROLL SPY) ---
 const sections = document.querySelectorAll('section, header');
 const navLinks = document.querySelectorAll('.nav-link');
 
 window.addEventListener('scroll', () => {
-    let current = '';
+    let current = 'accueil'; // Default to accueil
     
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        // On active la section quand on a scrollé un quart dedans
         if (pageYOffset >= (sectionTop - sectionHeight / 4)) {
             current = section.getAttribute('id');
         }
@@ -72,7 +127,7 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// --- 3. MENU MOBILE ---
+// --- 5. MENU MOBILE ---
 const mobileMenu = document.getElementById('mobile-menu');
 const navList = document.querySelector('.nav-list');
 
@@ -81,35 +136,13 @@ if (mobileMenu) {
         navList.classList.toggle('active');
     });
 }
-// Ferme le menu quand on clique sur un lien (sur mobile)
 document.querySelectorAll('.nav-list a').forEach(link => {
     link.addEventListener('click', () => {
         navList.classList.remove('active');
-        // Mobile menu est caché par défaut dans le CSS, on ne gère que la classe 'active'
     });
 });
 
-// --- 4. FILTRES PORTFOLIO ---
-const filterButtons = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
-
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        const filterValue = button.getAttribute('data-filter');
-
-        projectCards.forEach(card => {
-            if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    });
-});
-
-// --- 5. TYPEWRITER EFFECT ---
+// --- 6. TYPEWRITER EFFECT ---
 const TypeWriter = function(txtElement, words, wait = 3000) {
     this.txtElement = txtElement;
     this.words = words;
@@ -124,16 +157,12 @@ TypeWriter.prototype.type = function() {
     const current = this.wordIndex % this.words.length;
     const fullTxt = this.words[current];
 
-    if(this.isDeleting) {
-        this.txt = fullTxt.substring(0, this.txt.length - 1);
-    } else {
-        this.txt = fullTxt.substring(0, this.txt.length + 1);
-    }
+    if(this.isDeleting) { this.txt = fullTxt.substring(0, this.txt.length - 1); } 
+    else { this.txt = fullTxt.substring(0, this.txt.length + 1); }
 
     this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
 
     let typeSpeed = 100;
-
     if(this.isDeleting) { typeSpeed /= 2; }
 
     if(!this.isDeleting && this.txt === fullTxt) {
@@ -157,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// --- 6. RETOUR HAUT ---
+// --- 7. RETOUR HAUT ---
 const backToTop = document.getElementById('back-to-top');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 300) backToTop.classList.add('show');
