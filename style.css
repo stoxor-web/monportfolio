@@ -1,49 +1,156 @@
-/* Reset basique */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; }
+/* 1. IMPORTATION DES POLICES (Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400&display=swap');
 
-/* Navigation */
-nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; background: #2c3e50; color: white; }
-nav ul { list-style: none; display: flex; gap: 20px; }
-nav a { color: white; text-decoration: none; }
-.btn-devis { background: #e74c3c; padding: 10px 20px; border-radius: 5px; }
+/* 2. RESET & BASES */
+* { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
 
-/* Sections */
-section { padding: 4rem 10%; text-align: center; }
-h2 { margin-bottom: 2rem; color: #2c3e50; }
-
-/* Hero (Accueil) */
-header { background: #ecf0f1; padding: 100px 20px; text-align: center; }
-.dispo-badge { display: inline-block; background: #d4edda; color: #155724; padding: 5px 15px; border-radius: 50px; margin: 20px 0; font-weight: bold;}
-.dot { height: 10px; width: 10px; background-color: #28a745; border-radius: 50%; display: inline-block; margin-right: 5px; }
-
-/* Cartes Compétences */
-.grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-.card { padding: 20px; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-.card i { font-size: 3rem; color: #3498db; margin-bottom: 15px; }
-
-/* Tarifs */
-.pricing-table { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-.price-card { border: 1px solid #ddd; padding: 30px; border-radius: 8px; width: 300px; }
-.featured { border: 2px solid #3498db; transform: scale(1.05); background: #f8fbfe; }
-.price { font-size: 2rem; font-weight: bold; color: #2c3e50; margin: 10px 0; }
-
-/* Formulaire */
-form { max-width: 600px; margin: 0 auto; text-align: left; }
-.form-group { margin-bottom: 15px; }
-label { display: block; margin-bottom: 5px; font-weight: bold; }
-input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
-button { width: 100%; background: #3498db; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; font-size: 1.1rem; }
-button:hover { background: #2980b9; }
-
-/* Animation d'apparition test */
-.hidden-element {
-    opacity: 0;
-    transform: translateY(30px); /* Décalé de 30px vers le bas */
-    transition: all 1s ease-out; /* L'animation dure 1 seconde */
+body { 
+    font-family: 'Roboto', sans-serif; /* Police pour le texte */
+    line-height: 1.6; 
+    color: #333; 
+    background-color: #f4f7f6; /* Gris très clair pour le fond global */
 }
 
-.visible {
-    opacity: 1;
-    transform: translateY(0); /* Revient à sa place normale */
+h1, h2, h3, nav a { font-family: 'Poppins', sans-serif; /* Police pour les titres */ }
+
+/* 3. NAVIGATION (Moderne & Épurée) */
+nav { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 1rem 5%; 
+    background: white; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Ombre légère sous le menu */
+    position: sticky; /* Le menu reste collé en haut */
+    top: 0;
+    z-index: 1000;
 }
+
+.logo { font-weight: 700; font-size: 1.5rem; color: #2c3e50; }
+
+nav ul { list-style: none; display: flex; gap: 30px; }
+nav a { color: #555; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+nav a:hover { color: #3498db; }
+
+.btn-devis { 
+    background: #3498db; 
+    color: white !important; 
+    padding: 10px 25px; 
+    border-radius: 50px; /* Bouton arrondi */
+    transition: transform 0.3s, background 0.3s !important;
+}
+.btn-devis:hover { 
+    background: #2980b9; 
+    transform: translateY(-2px); /* Le bouton monte un peu */
+}
+
+/* 4. HERO SECTION (L'effet "Wahou") */
+header { 
+    /* Image de fond tech + filtre sombre par dessus */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Effet Parallaxe (l'image reste fixe quand on scroll) */
+    height: 90vh; /* Prend 90% de la hauteur de l'écran */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+header .content { max-width: 800px; padding: 20px; }
+header h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.2; }
+header p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; }
+
+.cta-button {
+    background: #e74c3c;
+    color: white;
+    padding: 15px 40px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    transition: background 0.3s;
+}
+.cta-button:hover { background: #c0392b; }
+
+/* Badge Disponibilité */
+.dispo-badge { 
+    display: inline-flex; 
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1); 
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #2ecc71; 
+    padding: 8px 20px; 
+    border-radius: 50px; 
+    margin-bottom: 30px; 
+    backdrop-filter: blur(5px);
+}
+.dot { height: 10px; width: 10px; background-color: #2ecc71; border-radius: 50%; margin-right: 10px; box-shadow: 0 0 10px #2ecc71; }
+
+/* 5. SECTIONS GÉNÉRALES */
+section { padding: 5rem 10%; }
+h2 { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #2c3e50; position: relative; }
+/* Petite ligne bleue sous les titres */
+h2::after {
+    content: ''; display: block; width: 50px; height: 4px; background: #3498db; margin: 10px auto 0; border-radius: 2px;
+}
+
+/* 6. CARTES COMPÉTENCES (Effet Hover) */
+.grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.card { 
+    background: white; 
+    padding: 40px; 
+    border-radius: 15px; 
+    text-align: center; 
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none; /* On enlève la bordure moche */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+.card:hover { 
+    transform: translateY(-10px); /* La carte monte */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* L'ombre grandit */
+}
+.card i { font-size: 3.5rem; color: #3498db; margin-bottom: 20px; }
+
+/* 7. TARIFS */
+.pricing-table { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+.price-card { 
+    background: white; 
+    padding: 40px; 
+    border-radius: 15px; 
+    width: 320px; 
+    text-align: center; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    position: relative;
+    transition: transform 0.3s;
+}
+.price-card:hover { transform: scale(1.03); }
+.price-card.featured { 
+    border: 2px solid #3498db; 
+    transform: scale(1.05); 
+    z-index: 10;
+    box-shadow: 0 10px 30px rgba(52, 152, 219, 0.2);
+}
+.price { font-size: 2.5rem; color: #2c3e50; margin: 20px 0; font-weight: 700; }
+.price-card ul { list-style: none; padding: 0; margin-bottom: 30px; text-align: left; }
+.price-card ul li { margin-bottom: 10px; color: #666; }
+.price-card ul li::before { content: '✓'; color: #2ecc71; margin-right: 10px; font-weight: bold; }
+
+/* 8. FORMULAIRE & FOOTER */
+#contact { background: white; }
+form { box-shadow: 0 0 20px rgba(0,0,0,0.05); padding: 40px; border-radius: 15px; background: #fff; }
+input, select, textarea { 
+    width: 100%; padding: 15px; margin-bottom: 20px; 
+    border: 1px solid #ddd; border-radius: 8px; background: #f9f9f9; 
+    font-family: inherit;
+}
+input:focus, textarea:focus { outline: none; border-color: #3498db; background: white; }
+
+.footer-info { margin-top: 50px; text-align: center; color: #777; font-size: 0.9rem; border-top: 1px solid #eee; padding-top: 30px; }
+
+/* Animations d'apparition (déjà codées en JS) */
+.hidden-element { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+.visible { opacity: 1; transform: translateY(0); }
