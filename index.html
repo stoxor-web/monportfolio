@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="light">
+<html lang="fr" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Meta SEO de base -->
-    <meta name="description" content="Portfolio Développeur Web & Designer. Création de sites sur-mesure.">
+    <meta name="description" content="Portfolio Développeur Full Stack, Conception et Sécurité Web.">
     <title>Mon Portfolio - Solutions Digitales</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -15,12 +15,12 @@
 
     <!-- NAVIGATION -->
     <nav>
-        <div class="logo">Mon<span class="highlight">Portfolio</span>.</div>
+        <div class="logo">Mon<span class="highlight">Portfolio</span><span class="angle-bracket"> /&gt;</span></div>
         
         <div class="nav-right-controls">
             <!-- Bouton Mode Sombre -->
             <button id="theme-toggle" aria-label="Changer de thème">
-                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
             </button>
 
             <!-- Menu Burger -->
@@ -37,7 +37,7 @@
             <li><a href="#competences" class="nav-link">Expertises</a></li>
             <li><a href="#projets" class="nav-link">Projets</a></li>
             <li><a href="#avis" class="nav-link">Avis</a></li>
-            <li><a href="#contact" class="btn-devis">Me contacter</a></li>
+            <li><a href="#contact" class="btn-devis">Contact</a></li>
         </ul>
     </nav>
 
@@ -46,39 +46,42 @@
         <div class="overlay"></div>
         <div class="content">
             <!-- EFFET MACHINE À ÉCRIRE -->
-            <h1>Je suis <span class="txt-type" data-wait="2000" data-words='["Développeur Web", "Designer UI/UX", "Freelance"]'></span></h1>
-            <p>Transformez votre vision en réalité digitale performante.</p>
+            <h1 class="hero-title">
+                <span class="tech-label">Code / Conception / Sécurité</span><br>
+                Je suis <span class="txt-type" data-wait="2000" data-words='["Développeur Web", "Architecte Logiciel", "Expert en Cybersécurité"]'></span>
+            </h1>
+            <p>Développez votre présence en ligne avec des applications performantes, sécurisées et un design orienté utilisateur.</p>
             
             <div class="dispo-badge">
-                <span class="dot"></span> Disponible pour missions
+                <span class="dot"></span> Ouvert aux missions
             </div>
             
             <div class="hero-buttons">
-                <a href="#projets" class="cta-button primary">Voir mes travaux</a>
-                <a href="#contact" class="cta-button secondary">Devis gratuit</a>
+                <a href="#projets" class="cta-button primary">Voir les projets</a>
+                <a href="#contact" class="cta-button secondary">Démarrer un projet</a>
             </div>
         </div>
     </header>
 
     <!-- COMPÉTENCES -->
     <section id="competences">
-        <h2>Mes Domaines d'Expertise</h2>
+        <h2>Domaines d'Expertise</h2>
         <div class="grid-container" id="competences-grid">
             <!-- Ajout des classes pour l'animation staggered et l'effet 3D -->
             <div class="card stagger-item hover-3d" data-index="0">
-                <i class="fas fa-laptop-code"></i>
-                <h3>Développement Web</h3>
-                <p>Sites vitrines, E-commerce, Dashboards. Code propre et optimisé.</p>
+                <i class="fas fa-server"></i>
+                <h3>Développement Backend</h3>
+                <p>Architecture robuste, APIs REST/GraphQL, Bases de données optimisées.</p>
             </div>
             <div class="card stagger-item hover-3d" data-index="1">
-                <i class="fas fa-paint-brush"></i>
-                <h3>UI/UX Design</h3>
-                <p>Maquettes modernes, parcours utilisateur fluide et identité visuelle.</p>
+                <i class="fas fa-shield-alt"></i>
+                <h3>Sécurité Web</h3>
+                <p>Tests d'intrusion, audit de code, protection contre les menaces courantes (OWASP).</p>
             </div>
             <div class="card stagger-item hover-3d" data-index="2">
-                <i class="fas fa-search-dollar"></i>
-                <h3>SEO & Audit</h3>
-                <p>Amélioration de votre visibilité sur Google et de la vitesse du site.</p>
+                <i class="fas fa-desktop"></i>
+                <h3>Design Front-end</h3>
+                <p>Interfaces rapides (React/Angular), accessibilité, expérience utilisateur (UX).</p>
             </div>
         </div>
     </section>
@@ -89,9 +92,9 @@
         
         <div class="filter-container">
             <button class="filter-btn active" data-filter="all">Tous</button>
-            <button class="filter-btn" data-filter="web">Sites Web</button>
-            <button class="filter-btn" data-filter="mobile">Mobile</button>
-            <button class="filter-btn" data-filter="design">Design</button>
+            <button class="filter-btn" data-filter="web">Web</button>
+            <button class="filter-btn" data-filter="mobile">Sécurité</button>
+            <button class="filter-btn" data-filter="design">Conception</button>
         </div>
 
         <div class="grid-container project-grid">
@@ -99,25 +102,25 @@
             <div class="project-card lazy-load-img stagger-item hover-3d" data-category="web" data-img="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" data-index="3">
                 <div class="project-image"></div>
                 <div class="project-info">
-                    <span class="tag">Site Web</span>
-                    <h3>E-commerce Bio</h3>
+                    <span class="tag">Web</span>
+                    <h3>Plateforme SaaS</h3>
                     <a href="#" class="project-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             <div class="project-card lazy-load-img stagger-item hover-3d" data-category="mobile" data-img="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" data-index="4">
                 <div class="project-image"></div>
                 <div class="project-info">
-                    <span class="tag">App Mobile</span>
-                    <h3>Fitness Tracker</h3>
-                    <a href="#" class="project-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
+                    <span class="tag">Sécurité</span>
+                    <h3>Audit de Code</h3>
+                    <a href="#" class="project-link">Voir le rapport <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             <div class="project-card lazy-load-img stagger-item hover-3d" data-category="design" data-img="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" data-index="5">
                 <div class="project-image"></div>
                 <div class="project-info">
-                    <span class="tag">Design</span>
-                    <h3>Redesign Banque</h3>
-                    <a href="#" class="project-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
+                    <span class="tag">Conception</span>
+                    <h3>Dashboard IOT</h3>
+                    <a href="#" class="project-link">Voir la maquette <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -125,7 +128,7 @@
 
     <!-- AVIS CLIENTS (SCROLLING) -->
     <section id="avis">
-        <h2>Ce que disent mes clients</h2>
+        <h2>Avis Clients</h2>
         
         <!-- Conteneur du défilement -->
         <div class="testimonial-scroller">
@@ -134,7 +137,7 @@
                 <!-- GROUPE 1 -->
                 <div class="testimonial-card">
                     <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                    <p>"Un travail exceptionnel. Le site est rapide, beau et mes ventes ont augmenté de 30%."</p>
+                    <p>"Le niveau de sécurité de notre plateforme a été grandement amélioré. Travail technique impeccable."</p>
                     <div class="author">
                         <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
                         <div><h4>Marc Dupont</h4><span>CEO, TechStart</span></div>
@@ -143,7 +146,7 @@
                 
                 <div class="testimonial-card">
                     <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                    <p>"Très professionnel et réactif. Il a su comprendre mes besoins parfaitement."</p>
+                    <p>"L'application est rapide, le code est propre. Un développeur orienté résultats."</p>
                     <div class="author">
                         <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client">
                         <div><h4>Sophie Martin</h4><span>Fondatrice, FlowerShop</span></div>
@@ -152,7 +155,7 @@
 
                 <div class="testimonial-card">
                     <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                    <p>"Je recommande vivement. Une expertise technique impressionnante."</p>
+                    <p>"Expertise en architecture logicielle qui a sauvé notre projet complexe."</p>
                     <div class="author">
                         <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Client">
                         <div><h4>Thomas Bernard</h4><span>Directeur, Agency One</span></div>
@@ -162,7 +165,7 @@
                 <!-- GROUPE 2 (Doublons pour l'effet infini) -->
                 <div class="testimonial-card">
                     <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                    <p>"Un travail exceptionnel. Le site est rapide, beau et mes ventes ont augmenté de 30%."</p>
+                    <p>"Le niveau de sécurité de notre plateforme a été grandement amélioré. Travail technique impeccable."</p>
                     <div class="author">
                         <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
                         <div><h4>Marc Dupont</h4><span>CEO, TechStart</span></div>
@@ -171,7 +174,7 @@
                 
                 <div class="testimonial-card">
                     <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                    <p>"Très professionnel et réactif. Il a su comprendre mes besoins parfaitement."</p>
+                    <p>"L'application est rapide, le code est propre. Un développeur orienté résultats."</p>
                     <div class="author">
                         <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client">
                         <div><h4>Sophie Martin</h4><span>Fondatrice, FlowerShop</span></div>
@@ -180,7 +183,7 @@
 
                 <div class="testimonial-card">
                     <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                    <p>"Je recommande vivement. Une expertise technique impressionnante."</p>
+                    <p>"Expertise en architecture logicielle qui a sauvé notre projet complexe."</p>
                     <div class="author">
                         <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Client">
                         <div><h4>Thomas Bernard</h4><span>Directeur, Agency One</span></div>
@@ -193,10 +196,10 @@
 
     <!-- CONTACT -->
     <section id="contact" class="bg-dark-section">
-        <h2>Discutons de votre projet</h2>
+        <h2>Prêt à innover ?</h2>
         <!-- Conteneur pour le message de succès -->
         <div id="form-success-message" class="success-message" style="display: none;">
-            <i class="fas fa-check-circle"></i> Votre message a été envoyé avec succès ! Je reviens vers vous rapidement.
+            <i class="fas fa-check-circle"></i> Message envoyé ! Je vous recontacte sous 24h.
         </div>
 
         <!-- N'oubliez pas de remplacer VOTRE_ID_ICI par votre ID Formspree -->
@@ -212,30 +215,31 @@
                 </div>
             </div>
             <select name="sujet">
-                <option>Je souhaite...</option>
-                <option>Créer un site vitrine</option>
-                <option>Créer une boutique en ligne</option>
+                <option>Sélectionnez un sujet...</option>
+                <option>Développement Full Stack</option>
+                <option>Audit et Sécurité Web</option>
+                <option>Conception (UX/UI)</option>
                 <option>Autre</option>
             </select>
-            <textarea name="message" rows="5" placeholder="Détails du projet..." required></textarea>
-            <button type="submit">Envoyer <i class="fas fa-paper-plane"></i></button>
+            <textarea name="message" rows="5" placeholder="Décrivez votre besoin..." required></textarea>
+            <button type="submit">Envoyer la demande <i class="fas fa-code"></i></button>
         </form>
     </section>
 
-    <!-- FOOTER (CORRIGÉ) -->
+    <!-- FOOTER -->
     <footer>
         <div class="footer-content">
             <!-- COLONNE 1 : Logo et réseaux sociaux -->
             <div class="footer-col">
-                <h3>Mon<span class="highlight">Portfolio</span>.</h3>
-                <p>Création de solutions web sur mesure.</p>
+                <h3>Mon<span class="highlight">Portfolio</span><span class="angle-bracket"> /&gt;</span></h3>
+                <p>Développement | Sécurité | Conception.</p>
                 <div class="socials">
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#"><i class="fab fa-github"></i></a>
                 </div>
             </div>
             
-            <!-- COLONNE 2 : Liens Rapides (MANQUANTE AUPARAVANT) -->
+            <!-- COLONNE 2 : Liens Rapides -->
             <div class="footer-col">
                 <h3>Liens Rapides</h3>
                 <ul>

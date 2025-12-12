@@ -1,4 +1,4 @@
-console.log("Site chargé - Animations, 3D & Validation actifs");
+console.log("Site chargé - Lazy Loading & Validation actifs");
 
 // --- 1. GESTION DU MODE SOMBRE (DARK MODE) ---
 const themeToggle = document.getElementById('theme-toggle');
@@ -11,15 +11,15 @@ function updateIcon(theme) {
 
     if (theme === 'dark') {
         icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
+        icon.classList.add('fa-sun'); // En mode dark, on montre le soleil (pour passer en light)
     } else {
         icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
+        icon.classList.add('fa-moon'); // En mode light, on montre la lune (pour passer en dark)
     }
 }
 
 const savedTheme = localStorage.getItem('theme');
-let initialTheme = 'light';
+let initialTheme = 'dark'; // CHANGEMENT: Définition du thème initial sur DARK
 if (savedTheme) { initialTheme = savedTheme; }
 
 htmlElement.setAttribute('data-theme', initialTheme);
@@ -60,7 +60,7 @@ document.querySelectorAll('.lazy-load-img').forEach(card => {
 });
 
 
-// --- 3. GESTION DU FORMULAIRE ET MESSAGE DE SUCCÈS (NOUVEAU) ---
+// --- 3. GESTION DU FORMULAIRE ET MESSAGE DE SUCCÈS ---
 const contactForm = document.getElementById('contact-form');
 const nameInput = document.getElementById('name');
 const emailInput = document.getElementById('email');
@@ -92,13 +92,12 @@ if (emailInput) emailInput.addEventListener('input', validateEmail);
 
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault(); // Empêche l'envoi par défaut pour la validation et le feedback
+        e.preventDefault(); 
         const isNameValid = validateName();
         const isEmailValid = validateEmail();
 
         if (isNameValid && isEmailValid) {
             
-            // Simule l'envoi à Formspree pour afficher le message de succès personnalisé
             const formspreeAction = contactForm.action;
             const formData = new FormData(contactForm);
             
@@ -110,38 +109,29 @@ if (contactForm) {
                 });
 
                 if (response.ok) {
-                    // Masque le formulaire et affiche le message de succès
                     contactForm.style.display = 'none';
                     successMessage.style.display = 'block';
-                    // Ajoute la classe pour l'animation CSS
                     setTimeout(() => successMessage.classList.add('visible'), 10); 
                     
                 } else {
-                    // Gérer les erreurs de Formspree (ex: captcha manquant)
                     console.error("Erreur lors de l'envoi du formulaire.");
-                    alert("Une erreur est survenue lors de l'envoi. Veuillez réessayer plus tard.");
                 }
             } catch (error) {
                 console.error("Erreur réseau:", error);
-                alert("Erreur de connexion. Veuillez vérifier votre réseau.");
             }
 
-        } else {
-            // Utilisé pour déclencher les messages d'erreur si l'utilisateur essaie d'envoyer
-            // sans avoir rempli correctement les champs
         }
     });
 }
 
 
-// --- 4. ANIMATION AU DÉFILEMENT STAGGERED (NOUVEAU) ---
+// --- 4. ANIMATION AU DÉFILEMENT STAGGERED ---
 const staggerObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const element = entry.target;
             const index = parseInt(element.getAttribute('data-index'));
             
-            // Applique un délai basé sur l'index de l'élément (0, 1, 2, ...)
             element.style.transitionDelay = `${index * 0.15}s`;
             element.classList.add('visible');
             
@@ -150,35 +140,29 @@ const staggerObserver = new IntersectionObserver((entries, observer) => {
     });
 }, { threshold: 0.1 });
 
-// Cible tous les éléments marqués pour l'animation en escalier
 document.querySelectorAll('.stagger-item').forEach(el => {
     staggerObserver.observe(el);
 });
 
 
-// --- 5. EFFET HOVER 3D (NOUVEAU) ---
+// --- 5. EFFET HOVER 3D ---
 const cards3d = document.querySelectorAll('.hover-3d');
 
 cards3d.forEach(card => {
     card.addEventListener('mousemove', (e) => {
-        // Obtient les coordonnées du curseur à l'intérieur de la carte
         const cardRect = card.getBoundingClientRect();
-        const x = e.clientX - cardRect.left; // Coordonnée X relative
-        const y = e.clientY - cardRect.top;  // Coordonnée Y relative
+        const x = e.clientX - cardRect.left; 
+        const y = e.clientY - cardRect.top;  
 
-        // Calcule le centre de la carte (50%)
         const center_x = cardRect.width / 2;
         const center_y = cardRect.height / 2;
 
-        // Calcule l'angle de rotation (entre -10 et 10 degrés)
-        const rotate_x = ((y - center_y) / center_y) * 10;
-        const rotate_y = ((x - center_x) / center_x) * -10; // Inversé pour un effet plus naturel
+        const rotate_x = ((y - center_y) / center_y) * 5; // Rotation réduite à 5 degrés
+        const rotate_y = ((x - center_x) / center_x) * -5;
 
-        // Applique la transformation 3D
-        card.style.transform = `perspective(1000px) rotateX(${rotate_x}deg) rotateY(${rotate_y}deg) scale(1.03)`;
+        card.style.transform = `perspective(1000px) rotateX(${rotate_x}deg) rotateY(${rotate_y}deg) scale(1.02)`;
     });
 
-    // Remet la carte à plat quand la souris sort
     card.addEventListener('mouseleave', () => {
         card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
     });
@@ -208,22 +192,7 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// --- 7. MENU MOBILE ---
-const mobileMenu = document.getElementById('mobile-menu');
-const navList = document.querySelector('.nav-list');
-
-if (mobileMenu) {
-    mobileMenu.addEventListener('click', () => {
-        navList.classList.toggle('active');
-    });
-}
-document.querySelectorAll('.nav-list a').forEach(link => {
-    link.addEventListener('click', () => {
-        navList.classList.remove('active');
-    });
-});
-
-// --- 8. LAZY LOADING & TYPEWRITER INITIALISATION (au chargement) ---
+// --- 7. TYPEWRITER INITIALISATION ---
 const TypeWriter = function(txtElement, words, wait = 3000) {
     this.txtElement = txtElement;
     this.words = words;
