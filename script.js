@@ -3,26 +3,13 @@ console.log("Site chargé - Mode Expert Actif");
 // --- 1. GESTION DU MODE SOMBRE (DARK MODE) ---
 const themeToggle = document.getElementById('theme-toggle');
 const htmlElement = document.documentElement;
-const icon = themeToggle.querySelector('i');
 
-// Vérifier si l'utilisateur avait déjà choisi un thème
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-    htmlElement.setAttribute('data-theme', savedTheme);
-    updateIcon(savedTheme);
-}
-
-themeToggle.addEventListener('click', () => {
-    // Basculer entre light et dark
-    const currentTheme = htmlElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme); // Sauvegarder le choix
-    updateIcon(newTheme);
-});
-
+// Fonction pour mettre à jour l'icône
 function updateIcon(theme) {
+    if (!themeToggle) return;
+    const icon = themeToggle.querySelector('i');
+    if (!icon) return;
+
     if (theme === 'dark') {
         icon.classList.remove('fa-moon');
         icon.classList.add('fa-sun'); // Afficher le soleil en mode sombre
@@ -31,6 +18,35 @@ function updateIcon(theme) {
         icon.classList.add('fa-moon'); // Afficher la lune en mode clair
     }
 }
+
+// Initialisation au chargement de la page
+const savedTheme = localStorage.getItem('theme');
+let initialTheme = 'light';
+
+if (savedTheme) {
+    initialTheme = savedTheme;
+} 
+// Optionnel: Détecter le thème système pour la première visite
+/* else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    initialTheme = 'dark';
+} */
+
+htmlElement.setAttribute('data-theme', initialTheme);
+updateIcon(initialTheme);
+
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        // Basculer entre light et dark
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        htmlElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme); // Sauvegarder le choix
+        updateIcon(newTheme);
+    });
+}
+
 
 // --- 2. NAVIGATION INTELLIGENTE (SCROLL SPY) ---
 const sections = document.querySelectorAll('section, header');
@@ -42,8 +58,8 @@ window.addEventListener('scroll', () => {
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        // On active la section quand on a scrollé un tiers dedans
-        if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+        // On active la section quand on a scrollé un quart dedans
+        if (pageYOffset >= (sectionTop - sectionHeight / 4)) {
             current = section.getAttribute('id');
         }
     });
@@ -65,9 +81,11 @@ if (mobileMenu) {
         navList.classList.toggle('active');
     });
 }
+// Ferme le menu quand on clique sur un lien (sur mobile)
 document.querySelectorAll('.nav-list a').forEach(link => {
     link.addEventListener('click', () => {
         navList.classList.remove('active');
+        // Mobile menu est caché par défaut dans le CSS, on ne gère que la classe 'active'
     });
 });
 
