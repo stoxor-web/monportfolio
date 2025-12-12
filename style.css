@@ -45,50 +45,64 @@ p { color: var(--text-muted); }
 
 /* --- SUPPRESSION FLÈCHE ET CTA FLOTTANT --- */
 #back-to-top, #floating-cta {
-    display: none !important; /* Cache complètement les éléments */
+    display: none !important; 
 }
 
 
 /* --- NAVIGATION (CORRIGÉE POUR LE BOUTON À DROITE) --- */
 nav { 
-    display: flex; justify-content: space-between; align-items: center; 
-    padding: 1.2rem 5%; background: var(--bg-nav); 
-    backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; 
+    display: flex; 
+    align-items: center; 
+    padding: 1.2rem 5%; 
+    background: var(--bg-nav); 
+    backdrop-filter: blur(10px); 
+    position: sticky; top: 0; z-index: 1000; 
     border-bottom: 1px solid var(--border-color);
 }
 .logo { font-weight: 700; font-size: 1.5rem; color: var(--text-main); }
 .highlight { color: var(--primary); }
 
-.nav-right-controls { display: flex; align-items: center; gap: 20px; } 
+/* Conteneur pour le bouton de thème et le burger */
+.nav-right-controls { 
+    display: flex; 
+    align-items: center; 
+    gap: 20px; 
+    /* Pousse tout le contenu qui suit (nav-list) vers la droite */
+    margin-left: auto; 
+} 
 
 /* Bouton Theme Toggle (DISCRET ET À DROITE) */
 #theme-toggle {
     background: transparent; 
-    border: none; /* Retirer la bordure */
+    border: none; 
     color: var(--text-main); 
-    padding: 10px; /* Moins de padding */
+    padding: 10px; 
     border-radius: 50%;
     cursor: pointer; 
-    font-size: 1.2rem; /* Légèrement plus grand pour être cliquable */
+    font-size: 1.2rem; 
     transition: 0.3s;
     z-index: 1001; 
+    /* Retire la marge gauche automatique si elle était appliquée, mais comme il est à l'intérieur de nav-right-controls, c'est bon */
+    order: 2; /* S'assure que le bouton de thème est avant le menu burger sur desktop/tablette */
 }
 #theme-toggle:hover { 
-    background: var(--bg-alt); /* Montre qu'il est cliquable */
+    background: var(--bg-alt); 
     color: var(--primary); 
 }
 
-/* Nav list est alignée à gauche par défaut (pas nécessaire de la bouger) */
+/* Nav list est placée juste après le logo et est masquée sur mobile */
 .nav-list { 
     display: flex; 
     gap: 30px; 
     list-style: none; 
     align-items: center; 
-    margin-left: auto; /* Pousse les liens le plus à droite possible */
+    /* ALIGNEMENT CORRIGÉ: S'assure que la nav list apparaît avant nav-right-controls sur desktop */
+    order: 3; /* Positionne la liste après le logo et les contrôles */
+    margin-left: 30px; /* Ajoute un peu d'espace avec le logo */
 }
-.nav-list a { text-decoration: none; color: var(--text-main); font-weight: 500; transition: 0.3s; }
 
-/* Active Link (Scroll Spy) */
+/* Scroll Spy */
+.nav-list a { text-decoration: none; color: var(--text-main); font-weight: 500; transition: 0.3s; }
 .nav-link.active { color: var(--primary); font-weight: 700; }
 .nav-link:hover { color: var(--primary); }
 
@@ -180,7 +194,7 @@ button { width: 100%; padding: 15px; background: var(--primary); color: white; b
 footer { background: #020617; color: #94a3b8; padding: 60px 0 0; }
 
 /* --- MOBILE --- */
-@media (max-width: 900px) { /* Augmentation du breakpoint pour cacher le menu plus tôt */
+@media (max-width: 900px) { 
     /* Cache les liens de la navigation sur mobile/tablette */
     .nav-list { display: none; } 
     .nav-list.active {
@@ -195,6 +209,18 @@ footer { background: #020617; color: #94a3b8; padding: 60px 0 0; }
     
     /* Le bouton de thème et le burger sont à droite, le logo à gauche */
     nav { justify-content: space-between; }
-    .nav-right-controls { order: 2; } /* S'assure que les contrôles sont bien à droite */
+    .nav-right-controls { order: 2; margin-left: auto; } /* S'assure que les contrôles sont bien à droite */
     .logo { order: 1; }
+    
+    /* ALIGNEMENT CORRIGÉ: La liste de navigation doit prendre l'ordre 3 (masquée par défaut) */
+    .nav-list { order: 3; } 
+    
+    .form-row, .footer-content { grid-template-columns: 1fr; }
+    h1 { font-size: 2.5rem; }
+    
+    /* Animation mobile pour l'apparition du menu */
+    @keyframes slideIn {
+        from { transform: translateY(-10px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
 }
