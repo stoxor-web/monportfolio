@@ -37,8 +37,7 @@ if (themeToggle) {
     });
 }
 
-// --- 2. LAZY LOADING DES IMAGES DE PROJET (NOUVEAU) ---
-// Utilisation de l'API Intersection Observer pour ne charger l'image que lorsqu'elle est visible
+// --- 2. LAZY LOADING DES IMAGES DE PROJET ---
 const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -47,22 +46,20 @@ const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
             const projectImageDiv = card.querySelector('.project-image');
             
             if (imgUrl) {
-                // Charge l'image en définissant le background
                 projectImageDiv.style.backgroundImage = `url('${imgUrl}')`;
                 card.classList.remove('lazy-load-img');
             }
-            // Arrête d'observer cet élément une fois qu'il est chargé
             observer.unobserve(card);
         }
     });
-}, { threshold: 0.1 }); // Commence à charger 10% avant l'apparition
+}, { threshold: 0.1 }); 
 
 document.querySelectorAll('.lazy-load-img').forEach(card => {
     lazyLoadObserver.observe(card);
 });
 
 
-// --- 3. VALIDATION DE FORMULAIRE (NOUVEAU) ---
+// --- 3. VALIDATION DE FORMULAIRE ---
 const contactForm = document.getElementById('contact-form');
 const nameInput = document.getElementById('name');
 const emailInput = document.getElementById('email');
@@ -79,7 +76,6 @@ function validateName() {
 }
 
 function validateEmail() {
-    // Regex simple pour la validation d'email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(emailInput.value)) {
         emailError.textContent = "Veuillez entrer une adresse email valide.";
@@ -98,8 +94,9 @@ if (contactForm) {
         const isEmailValid = validateEmail();
 
         if (!isNameValid || !isEmailValid) {
-            e.preventDefault(); // Bloque l'envoi si la validation échoue
-            alert("Veuillez corriger les erreurs dans le formulaire avant d'envoyer.");
+            e.preventDefault();
+            // Utiliser une méthode plus douce que alert() pour la validation
+            console.error("Veuillez corriger les erreurs dans le formulaire avant d'envoyer.");
         }
     });
 }
@@ -109,7 +106,7 @@ const sections = document.querySelectorAll('section, header');
 const navLinks = document.querySelectorAll('.nav-link');
 
 window.addEventListener('scroll', () => {
-    let current = 'accueil'; // Default to accueil
+    let current = 'accueil';
     
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
@@ -184,11 +181,4 @@ document.addEventListener('DOMContentLoaded', () => {
         const wait = txtElement.getAttribute('data-wait');
         new TypeWriter(txtElement, words, wait);
     }
-});
-
-// --- 7. RETOUR HAUT ---
-const backToTop = document.getElementById('back-to-top');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) backToTop.classList.add('show');
-    else backToTop.classList.remove('show');
 });
