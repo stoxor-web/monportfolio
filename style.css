@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
 
-/* --- VARIABLES DE THÈMES (LA MAGIE OPÈRE ICI) --- */
+/* --- VARIABLES DE THÈMES --- */
 :root {
     /* Couleurs fixes */
     --primary: #4361ee;
@@ -9,7 +9,7 @@
     
     /* Variables dynamiques (Light Mode par défaut) */
     --bg-body: #ffffff;
-    --bg-alt: #f8f9fa; /* Fond gris très clair pour alternance */
+    --bg-alt: #f8f9fa;
     --bg-card: #ffffff;
     --bg-nav: rgba(255, 255, 255, 0.9);
     --text-main: #0f172a;
@@ -20,8 +20,8 @@
 
 /* Variables Dark Mode */
 [data-theme="dark"] {
-    --bg-body: #0f172a; /* Bleu très nuit */
-    --bg-alt: #1e293b;  /* Un peu plus clair */
+    --bg-body: #0f172a;
+    --bg-alt: #1e293b;
     --bg-card: #1e293b;
     --bg-nav: rgba(15, 23, 42, 0.9);
     --text-main: #f8fafc;
@@ -36,7 +36,7 @@ body {
     line-height: 1.6; 
     background-color: var(--bg-body); 
     color: var(--text-main); 
-    transition: background-color 0.3s, color 0.3s; /* Transition douce lors du changement */
+    transition: background-color 0.3s, color 0.3s;
     overflow-x: hidden;
 }
 
@@ -55,7 +55,6 @@ nav {
 
 .nav-right { display: flex; align-items: center; gap: 20px; }
 
-/* Bouton Theme Toggle */
 #theme-toggle {
     background: transparent; border: 1px solid var(--border-color);
     color: var(--text-main); padding: 8px 12px; border-radius: 50%;
@@ -65,8 +64,6 @@ nav {
 
 .nav-list { display: flex; gap: 30px; list-style: none; align-items: center; }
 .nav-list a { text-decoration: none; color: var(--text-main); font-weight: 500; transition: 0.3s; }
-
-/* Active Link (Scroll Spy) */
 .nav-link.active { color: var(--primary); font-weight: 700; }
 .nav-link:hover { color: var(--primary); }
 
@@ -81,10 +78,9 @@ header {
 }
 .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(67, 97, 238, 0.7)); }
 .content { position: relative; z-index: 1; padding: 20px; }
-h1 { font-size: 3.5rem; color: white; min-height: 80px; } /* Texte toujours blanc dans le header */
+h1 { font-size: 3.5rem; color: white; min-height: 80px; }
 header p { color: rgba(255,255,255,0.8); }
 
-/* Typewriter */
 .txt-type > .txt { border-right: 3px solid var(--primary); color: #4cc9f0; }
 @keyframes blink { 0% { border-color: transparent; } 50% { border-color: var(--primary); } 100% { border-color: transparent; } }
 
@@ -105,11 +101,11 @@ h2::after { content: ''; display: block; width: 60px; height: 4px; background: v
     background: var(--bg-card); 
     border: 1px solid var(--border-color);
     border-radius: 15px; 
-    padding: 30px; 
     box-shadow: var(--shadow);
     transition: 0.3s;
 }
-.card:hover, .project-card:hover, .testimonial-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+.card { padding: 30px; }
+.card:hover, .project-card:hover { transform: translateY(-5px); border-color: var(--primary); }
 
 .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 
@@ -127,6 +123,54 @@ h2::after { content: ''; display: block; width: 60px; height: 4px; background: v
 .filter-container { text-align: center; margin-bottom: 40px; }
 .filter-btn { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-main); padding: 8px 20px; border-radius: 30px; cursor: pointer; margin: 0 5px; transition: 0.3s; }
 .filter-btn.active, .filter-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+/* --- TÉMOIGNAGES (SCROLLING ANIMATION) --- */
+.testimonial-scroller {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+    /* Masque pour effet fondu sur les côtés */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.testimonial-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    animation: scroll 30s linear infinite;
+}
+
+/* Pause l'animation au survol */
+.testimonial-track:hover {
+    animation-play-state: paused;
+}
+
+.testimonial-card {
+    width: 350px; /* Largeur fixe nécessaire pour le défilement fluide */
+    flex-shrink: 0; /* Empêche l'écrasement */
+    padding: 30px;
+    position: relative;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.quote-icon { font-size: 2rem; color: rgba(67, 97, 238, 0.2); position: absolute; top: 20px; right: 20px; }
+.author { display: flex; align-items: center; gap: 15px; margin-top: 20px; }
+.author img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+.author h4 { font-size: 1rem; margin: 0; }
+.author span { font-size: 0.85rem; color: var(--text-muted); }
+
+/* L'animation qui fait bouger la piste */
+@keyframes scroll {
+    to {
+        transform: translateX(calc(-50% - 15px)); /* -50% car on a doublé le contenu (15px est la moitié du gap) */
+    }
+}
 
 /* --- CONTACT --- */
 .bg-dark-section { background: #0f172a; color: white; }
