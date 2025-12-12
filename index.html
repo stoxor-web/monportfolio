@@ -20,8 +20,8 @@
     <nav>
         <div class="logo">Mon<span class="highlight">Portfolio</span>.</div>
         
-        <div class="nav-right">
-            <!-- Bouton Mode Sombre -->
+        <div class="nav-right-controls">
+            <!-- Bouton Mode Sombre (CORRIGÉ) -->
             <button id="theme-toggle" aria-label="Changer de thème">
                 <i class="fas fa-moon"></i>
             </button>
@@ -35,7 +35,7 @@
         </div>
 
         <ul class="nav-list">
-            <li><a href="#accueil" class="nav-link active">Accueil</a></li>
+            <li><a href="#accueil" class="nav-link">Accueil</a></li>
             <li><a href="#competences" class="nav-link">Expertises</a></li>
             <li><a href="#projets" class="nav-link">Projets</a></li>
             <li><a href="#avis" class="nav-link">Avis</a></li>
@@ -47,6 +47,7 @@
     <header id="accueil">
         <div class="overlay"></div>
         <div class="content">
+            <!-- EFFET MACHINE À ÉCRIRE -->
             <h1>Je suis <span class="txt-type" data-wait="2000" data-words='["Développeur Web", "Designer UI/UX", "Freelance"]'></span></h1>
             <p>Transformez votre vision en réalité digitale performante.</p>
             
@@ -211,6 +212,7 @@
     <!-- CONTACT -->
     <section id="contact" class="bg-dark-section">
         <h2>Discutons de votre projet</h2>
+        <!-- N'oubliez pas de remplacer VOTRE_ID_ICI par votre ID Formspree -->
         <form action="https://formspree.io/f/VOTRE_ID_ICI" method="POST">
             <div class="form-row">
                 <input type="text" name="name" placeholder="Votre Nom" required>
