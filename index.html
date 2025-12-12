@@ -3,115 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Nom - Développeur & Solutions Informatiques</title>
+    <title>Mon Portfolio - Développeur Web</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
+    <!-- NAVIGATION -->
     <nav>
-        <div class="logo">MonEntreprise</div>
-        <ul>
+        <div class="logo">Mon<span class="highlight">Portfolio</span>.</div>
+        
+        <!-- Menu Burger pour Mobile -->
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <ul class="nav-list">
             <li><a href="#accueil">Accueil</a></li>
             <li><a href="#competences">Compétences</a></li>
+            <li><a href="#projets">Réalisations</a></li> <!-- NOUVEAU -->
             <li><a href="#tarifs">Tarifs</a></li>
-            <li><a href="#contact" class="btn-devis">Demander un devis</a></li>
+            <li><a href="#contact" class="btn-devis">Me contacter</a></li>
         </ul>
     </nav>
 
+    <!-- HERO SECTION -->
     <header id="accueil">
+        <div class="overlay"></div> <!-- Filtre sombre -->
         <div class="content">
-            <h1>Expert en Solutions Informatiques</h1>
-            <p>Je transforme vos idées en réalité numérique.</p>
+            <h1>Je crée des expériences <br><span class="gradient-text">Web Uniques</span></h1>
+            <p>Développeur Front-end & Créateur de solutions digitales.</p>
             
-            <div class="dispo-badge disponible">
-                <span class="dot"></span> Actuellement disponible
+            <div class="dispo-badge">
+                <span class="dot"></span> Disponible pour missions
             </div>
             
-            <a href="#contact" class="cta-button">Me contacter</a>
+            <div class="hero-buttons">
+                <a href="#projets" class="cta-button primary">Voir mes travaux</a>
+                <a href="#contact" class="cta-button secondary">Me contacter</a>
+            </div>
         </div>
     </header>
 
+    <!-- COMPÉTENCES -->
     <section id="competences">
         <h2>Mes Expertises</h2>
         <div class="grid-container">
             <div class="card">
-                <i class="fas fa-laptop-code"></i>
-                <h3>Développement Web</h3>
-                <p>HTML5, CSS3, JavaScript. Création de sites vitrines et responsive.</p>
+                <i class="fas fa-code"></i>
+                <h3>Développement</h3>
+                <p>HTML5, CSS3, JavaScript moderne. Sites rapides et maintenables.</p>
             </div>
             <div class="card">
-                <i class="fas fa-server"></i>
-                <h3>Maintenance</h3>
-                <p>Mise à jour, sécurisation et optimisation de vos systèmes.</p>
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Responsive Design</h3>
+                <p>Compatible tablette et mobile. Approche "Mobile First".</p>
             </div>
             <div class="card">
-                <i class="fas fa-search"></i>
-                <h3>SEO & Audit</h3>
-                <p>Optimisation pour les moteurs de recherche et audit technique.</p>
+                <i class="fas fa-rocket"></i>
+                <h3>SEO & Perf</h3>
+                <p>Optimisation du référencement naturel et vitesse de chargement.</p>
             </div>
         </div>
     </section>
 
+    <!-- NOUVELLE SECTION : RÉALISATIONS -->
+    <section id="projets" class="bg-light">
+        <h2>Derniers Projets</h2>
+        <div class="grid-container">
+            <!-- Projet 1 -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1481487484168-9b995ecc168d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="project-info">
+                    <h3>Site E-commerce</h3>
+                    <p>Une boutique en ligne complète avec panier et paiement.</p>
+                    <a href="#" class="project-link">Voir le site <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <!-- Projet 2 -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="project-info">
+                    <h3>Dashboard Admin</h3>
+                    <p>Interface de gestion pour une entreprise de logistique.</p>
+                    <a href="#" class="project-link">Voir le site <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <!-- Projet 3 -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1555421689-491a97ff2040?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="project-info">
+                    <h3>Application Mobile</h3>
+                    <p>Design UX/UI pour une application de voyage.</p>
+                    <a href="#" class="project-link">Voir le site <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TARIFS -->
     <section id="tarifs">
         <h2>Tarifs & Forfaits</h2>
         <div class="pricing-table">
             <div class="price-card">
-                <h3>Taux Horaire</h3>
-                <p class="price">50€ / h</p>
+                <h3>Freelance / Heure</h3>
+                <p class="price">50€</p>
                 <ul>
                     <li>Intervention rapide</li>
                     <li>Débogage</li>
-                    <li>Consulting</li>
+                    <li>Conseil technique</li>
                 </ul>
             </div>
             <div class="price-card featured">
+                <div class="badge-pop">Populaire</div>
                 <h3>Site Vitrine</h3>
-                <p class="price">à partir de 800€</p>
+                <p class="price">800€</p>
                 <ul>
                     <li>Design personnalisé</li>
                     <li>5 pages</li>
-                    <li>Optimisé Mobile</li>
+                    <li>Optimisé SEO</li>
                     <li>Formulaire de contact</li>
+                </ul>
+                <a href="#contact" class="btn-select">Choisir</a>
+            </div>
+            <div class="price-card">
+                <h3>E-Commerce</h3>
+                <p class="price">2000€+</p>
+                <ul>
+                    <li>Boutique complète</li>
+                    <li>Paiement sécurisé</li>
+                    <li>Formation incluse</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <section id="contact">
-        <h2>Demande de devis / Contact</h2>
-        <p>Parlez-moi de votre projet. Réponse sous 24h.</p>
+    <!-- CONTACT -->
+    <section id="contact" class="bg-dark">
+        <h2>Démarrons un projet</h2>
+        <p style="color: #aaa; margin-bottom: 30px;">Remplissez le formulaire ci-dessous.</p>
         
-        <form action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST">
+        <form action="https://formspree.io/f/VOTRE_ID_ICI" method="POST">
             <div class="form-group">
-                <label>Nom complet</label>
-                <input type="text" name="name" required>
+                <input type="text" name="name" placeholder="Votre Nom" required>
             </div>
             <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" required>
+                <input type="email" name="email" placeholder="Votre Email" required>
             </div>
             <div class="form-group">
-                <label>Type de projet</label>
                 <select name="sujet">
-                    <option>Création de site</option>
-                    <option>Refonte</option>
-                    <option>Maintenance</option>
+                    <option>Type de projet...</option>
+                    <option>Site Vitrine</option>
+                    <option>E-commerce</option>
                     <option>Autre</option>
                 </select>
             </div>
             <div class="form-group">
-                <label>Message</label>
-                <textarea name="message" rows="5" required></textarea>
+                <textarea name="message" rows="5" placeholder="Votre message..." required></textarea>
             </div>
-            <button type="submit">Envoyer la demande</button>
+            <button type="submit">Envoyer le message <i class="fas fa-paper-plane"></i></button>
         </form>
         
         <div class="footer-info">
-            <p>📍 Amiens, France | 📧 contact@monmail.com | 📞 06 00 00 00 00</p>
-            <p>SIRET : 123 456 789 00000</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2025 MonPortfolio. Tous droits réservés.</p>
         </div>
     </section>
 
+    <script src="script.js"></script>
 </body>
 </html>
