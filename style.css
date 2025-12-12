@@ -119,23 +119,19 @@ button:focus, a:focus {
 
 /* --- CARTES ET PROJETS (OPTIMISÉES) --- */
 .card, .project-card, .testimonial-card { 
-    background: var(--bg-card); 
-    border: 1px solid var(--border-color); 
-    border-radius: 5px; 
-    padding: 30px; 
-    box-shadow: none; 
+    background: var(--bg-card); border: 1px solid var(--border-color); 
+    border-radius: 5px; padding: 30px; box-shadow: none; 
     transition: 0.3s;
 }
 .card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; } 
 
-/* Style spécifique aux cartes de projets */
+/* Style spécifique aux cartes de projets ('Mes Réalisations') */
 .project-card {
     overflow: hidden;
-    /* Ligne néon subtile au survol */
     box-shadow: 0 0 0 1px var(--border-color); 
+    border-radius: 5px; /* Reste rectangulaire */
 }
 .project-card:hover {
-    /* Augmente l'effet de ligne néon */
     box-shadow: 0 0 10px var(--accent), 0 0 0 1px var(--accent); 
 }
 .project-info h3 { font-size: 1.2rem; }
@@ -161,15 +157,24 @@ button:focus, a:focus {
     -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 .testimonial-track { display: flex; gap: 30px; width: max-content; animation: scroll 30s linear infinite; }
+.testimonial-track:hover { animation-play-state: paused; }
 .testimonial-card { 
     width: 350px; flex-shrink: 0; position: relative; 
-    /* Bordure nette plutôt qu'une ombre floue */
     border: 1px solid var(--border-color); 
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
-    transition: border-color 0.3s;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.4); /* Ombre intérieure subtile */
+    border-radius: 5px; /* Rectangulaire */
 }
 .testimonial-card:hover {
-    border-color: var(--accent);
+    border-color: var(--primary);
+}
+
+/* Image de profil en rond (Optimisation) */
+.author img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* ROND PARFAIT */
+    object-fit: cover;
+    border: 2px solid var(--accent); /* Bordure Cyan */
 }
 
 @keyframes scroll { to { transform: translateX(calc(-50% - 15px)); } }
@@ -191,13 +196,8 @@ input:focus, textarea:focus {
 }
 
 .success-message { background: var(--accent); color: var(--bg-body); }
-button { 
-    background: var(--primary); color: var(--bg-body); cursor: pointer; 
-    transition: background 0.3s;
-}
-button:hover {
-    background: var(--primary-hover);
-}
+button { background: var(--primary); color: var(--bg-body); cursor: pointer; }
+button:hover { background: var(--primary-hover); }
 
 /* --- FOOTER (OPTIMISÉ) --- */
 footer { 
@@ -214,10 +214,9 @@ footer {
 .footer-col a { color: var(--text-muted); text-decoration: none; display: block; }
 .footer-col a:hover { color: var(--primary); padding-left: 5px; }
 
-.socials a { 
-    color: var(--text-main); 
-    font-size: 1.2rem; 
-}
+.footer-col p i { margin-right: 10px; color: var(--accent); } /* Icônes de contact en Cyan */
+
+.socials a { color: var(--text-main); font-size: 1.2rem; }
 .socials a:hover { color: var(--primary); }
 
 .footer-bottom { 
