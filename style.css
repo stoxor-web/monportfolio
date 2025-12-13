@@ -101,12 +101,12 @@ h2 { text-align: center; font-size: 2.2rem; margin-bottom: 3rem; position: relat
 h2::after { content: ''; display: block; width: 40px; height: 2px; background: var(--primary); margin: 15px auto 0; border-radius: 1px; }
 
 /* --- CURSEUR ET FOCUS --- */
-button, .cta-button, .btn-devis, .nav-list a, .filter-btn, .socials a, .footer-col a {
+button, .cta-button, .btn-devis, .nav-list a, .filter-btn, .socials a, .footer-col a, .card {
     cursor: pointer;
     transition: all 0.3s ease-out;
 }
 button:focus, a:focus {
-    outline: 2px solid var(--primary); /* Utilisé le Vert Électrique pour tous les focus */
+    outline: 2px solid var(--primary);
     outline-offset: 3px;
     border-radius: 5px;
 }
@@ -117,13 +117,49 @@ button:focus, a:focus {
 }
 .hover-3d:hover { box-shadow: 0 0 0 1px var(--primary); }
 
-/* --- CARTES ET PROJETS (OPTIMISÉES) --- */
-.card, .project-card, .testimonial-card { 
-    background: var(--bg-card); border: 1px solid var(--border-color); 
+/* --- COMPÉTENCES (CARTE LIEN CORRECTION) --- */
+.card { /* Ceci cible les cartes <div> ET les cartes <a> (liens) */
     border-radius: 5px; padding: 30px; box-shadow: none; 
     transition: 0.3s;
+    text-decoration: none; /* Retrait du soulignement sur les cartes lien */
+    display: block; /* S'assurer que le lien prend toute la largeur du conteneur */
 }
 .card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; } 
+.card p { /* Assure que la description reste en couleur muted */
+    color: var(--text-muted); 
+}
+.card h3 { /* Assure que le titre reste en couleur principale */
+    color: var(--text-main);
+}
+.card:hover {
+    border-color: var(--primary); /* Ligne primaire au survol */
+}
+
+/* --- CARTES DE PROJETS ET FILTRES (CORRECTION DE LA TAILLE DES FILTRES) --- */
+
+/* Conteneur des filtres */
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+/* Boutons de filtre */
+.filter-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+    /* Correction de la largeur : n'occupe que l'espace nécessaire */
+    flex-grow: 0; 
+    flex-shrink: 0; 
+}
 
 /* Style spécifique aux cartes de projets ('Mes Réalisations') */
 .project-card {
@@ -151,7 +187,7 @@ button:focus, a:focus {
 /* Style pour les liens "Détails" (Boutons discrets) */
 .project-link {
     display: inline-block;
-    color: var(--text-main); /* Texte blanc/gris par défaut */
+    color: var(--text-main); 
     border: 1px solid var(--border-color);
     padding: 6px 12px;
     margin-top: 10px;
@@ -161,17 +197,9 @@ button:focus, a:focus {
     border-radius: 3px;
 }
 .project-link:hover {
-    color: var(--primary); /* Texte en vert au survol */
-    border-color: var(--primary); /* Bordure en vert au survol */
-    background: rgba(0, 255, 0, 0.05); /* Fond très léger */
-}
-.project-link i {
-    color: var(--primary); /* Flèche toujours en vert */
-    margin-left: 5px;
-    transition: margin-left 0.2s;
-}
-.project-link:hover i {
-    margin-left: 10px; /* Flèche glisse légèrement */
+    color: var(--primary); 
+    border-color: var(--primary); 
+    background: rgba(0, 255, 0, 0.05); 
 }
 
 
@@ -186,24 +214,15 @@ button:focus, a:focus {
     -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 .testimonial-track { display: flex; gap: 30px; width: max-content; animation: scroll 30s linear infinite; }
-.testimonial-track:hover { animation-play-state: paused; }
 .testimonial-card { 
     width: 350px; flex-shrink: 0; position: relative; 
     border: 1px solid var(--border-color); 
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.4); 
     border-radius: 5px; 
 }
-.testimonial-card:hover {
-    border-color: var(--primary);
-}
-
-/* Image de profil en rond (Optimisation) */
 .author img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%; /* ROND PARFAIT */
-    object-fit: cover;
-    border: 2px solid var(--accent); /* Bordure Cyan */
+    width: 50px; height: 50px; border-radius: 50%; 
+    object-fit: cover; border: 2px solid var(--accent); 
 }
 
 @keyframes scroll { to { transform: translateX(calc(-50% - 15px)); } }
@@ -211,19 +230,13 @@ button:focus, a:focus {
 /* --- CONTACT / FORMULAIRE (OPTIMISÉ) --- */
 .bg-dark-section { background: var(--bg-contact); color: var(--text-main); padding: 6rem 10%; border-top: 1px solid var(--border-color); }
 form { max-width: 700px; margin: 0 auto; text-align: center; }
-
-/* Champs de saisie optimisés */
 input, select, textarea { 
     width: 100%; padding: 15px; background: var(--bg-body); 
     border: 1px solid var(--border-color); 
     border-radius: 5px; color: var(--text-main); 
-    font-family: 'Inter', sans-serif;
-    text-align: left;
+    font-family: 'Inter', sans-serif; text-align: left;
 }
-input:focus, textarea:focus {
-    outline: none;
-    border-color: var(--primary); /* Vert Électrique au focus */
-}
+input:focus, textarea:focus { outline: none; border-color: var(--primary); }
 
 .success-message { background: var(--accent); color: var(--bg-body); }
 button { 
@@ -238,21 +251,16 @@ footer {
     background: var(--bg-footer); color: var(--text-muted); 
     padding: 40px 0 0; border-top: 1px solid var(--border-color);
 }
-
 .footer-content { 
     display: grid; grid-template-columns: 1.5fr 1fr 1fr; 
     gap: 50px; max-width: 1200px; margin: 0 auto; padding: 0 5%; 
 }
-
 .footer-col h3 { color: var(--text-main); margin-bottom: 20px; font-size: 1.2rem; }
 .footer-col a { color: var(--text-muted); text-decoration: none; display: block; }
 .footer-col a:hover { color: var(--primary); padding-left: 5px; }
-
-.footer-col p i { margin-right: 10px; color: var(--accent); } /* Icônes de contact en Cyan */
-
+.footer-col p i { margin-right: 10px; color: var(--accent); } 
 .socials a { color: var(--text-main); font-size: 1.2rem; }
 .socials a:hover { color: var(--primary); }
-
 .footer-bottom { 
     border-top: 1px solid var(--border-color);
     text-align: center; padding: 30px; margin-top: 50px; 
@@ -277,14 +285,12 @@ footer {
     .nav-list { order: 3; } 
     .form-row { grid-template-columns: 1fr; gap: 15px; }
     
-    /* Footer sur mobile: 1 colonne */
     .footer-content { 
         grid-template-columns: 1fr; 
         gap: 30px; 
     }
     h1 { font-size: 2.5rem; }
     
-    /* Bouton plein largeur sur mobile */
     button {
         width: 100%; 
         max-width: none;
