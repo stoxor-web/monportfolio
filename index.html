@@ -8,8 +8,6 @@
     <title>Mon Portfolio - Solutions Digitales</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Favicon (à ajouter si vous en avez un) -->
-    <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
 </head>
 <body>
 
@@ -41,7 +39,6 @@
         <header id="accueil">
             <div class="overlay"></div>
             <div class="content">
-                <!-- EFFET MACHINE À ÉCRIRE -->
                 <h1 class="hero-title">
                     <span class="tech-label">Code / Conception / Sécurité</span><br>
                     Je suis <span class="txt-type" data-wait="2000" data-words='["Développeur Web", "Architecte Logiciel", "Expert en Cybersécurité"]'></span>
@@ -63,22 +60,16 @@
         <section id="competences">
             <h2>Domaines d'Expertise</h2>
             <div class="grid-container" id="competences-grid">
-                
-                <!-- EXPERTISE 1 : Développement Backend -> Lié à pages/domaine1.html -->
                 <a href="pages/domaine1.html" class="card stagger-item hover-3d" data-index="0">
                     <i class="fas fa-server"></i>
                     <h3>Développement Backend</h3>
                     <p>Architecture robuste, APIs REST/GraphQL, Bases de données optimisées.</p>
                 </a>
-                
-                <!-- EXPERTISE 2 : Sécurité Web -> Lié à pages/domaine2.html -->
                 <a href="pages/domaine2.html" class="card stagger-item hover-3d" data-index="1">
                     <i class="fas fa-shield-alt"></i>
                     <h3>Sécurité Web</h3>
                     <p>Tests d'intrusion, audit de code, protection contre les menaces courantes (OWASP).</p>
                 </a>
-                
-                <!-- EXPERTISE 3 : Design Front-end -> Lié à pages/domaine3.html -->
                 <a href="pages/domaine3.html" class="card stagger-item hover-3d" data-index="2">
                     <i class="fas fa-desktop"></i>
                     <h3>Design Front-end</h3>
@@ -99,37 +90,31 @@
             </div>
 
             <div class="grid-container project-grid">
-                <!-- PROJET 1 : LIEN RÉTABLI (caché par défaut en CSS) -->
                 <div class="project-card lazy-load-img stagger-item hover-3d" data-category="web" data-img="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" data-index="3">
                     <div class="project-image"></div>
                     <div class="project-info">
                         <span class="tag">Web</span>
                         <h3>Plateforme SaaS</h3>
-                        <!-- LIEN RÉTABLI AVEC CLASSE D'ANIMATION -->
                         <a href="pages/projet1.html" class="project-link-overlay">
                             <span>Voir le projet</span> <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
-                <!-- PROJET 2 : LIEN RÉTABLI (caché par défaut en CSS) -->
                 <div class="project-card lazy-load-img stagger-item hover-3d" data-category="mobile" data-img="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" data-index="4">
                     <div class="project-image"></div>
                     <div class="project-info">
                         <span class="tag">Sécurité</span>
                         <h3>Audit de Code</h3>
-                        <!-- LIEN RÉTABLI AVEC CLASSE D'ANIMATION -->
                         <a href="pages/projet2.html" class="project-link-overlay">
                             <span>Voir le projet</span> <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
-                <!-- PROJET 3 : LIEN RÉTABLI (caché par défaut en CSS) -->
                 <div class="project-card lazy-load-img stagger-item hover-3d" data-category="design" data-img="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" data-index="5">
                     <div class="project-image"></div>
                     <div class="project-info">
                         <span class="tag">Conception</span>
                         <h3>Dashboard IOT</h3>
-                        <!-- LIEN RÉTABLI AVEC CLASSE D'ANIMATION -->
                         <a href="pages/projet3.html" class="project-link-overlay">
                             <span>Voir le projet</span> <i class="fas fa-arrow-right"></i>
                         </a>
@@ -138,68 +123,85 @@
             </div>
         </section>
 
-        <!-- AVIS CLIENTS (SCROLLING) -->
+        <!-- AVIS CLIENTS (REFAIT) -->
         <section id="avis">
             <h2>Avis Clients</h2>
             
-            <!-- Conteneur du défilement -->
             <div class="testimonial-scroller">
                 <div class="testimonial-track">
                     
                     <!-- GROUPE 1 -->
                     <div class="testimonial-card">
-                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
                         <p>"Le niveau de sécurité de notre plateforme a été grandement amélioré. Travail technique impeccable."</p>
                         <div class="author">
                             <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
                             <div><h4>Marc Dupont</h4><span>CEO, TechStart</span></div>
                         </div>
+                        <div class="quote-bg"><i class="fas fa-quote-right"></i></div>
                     </div>
                     
                     <div class="testimonial-card">
-                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
                         <p>"L'application est rapide, le code est propre. Un développeur orienté résultats."</p>
                         <div class="author">
                             <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client">
                             <div><h4>Sophie Martin</h4><span>Fondatrice, FlowerShop</span></div>
                         </div>
+                        <div class="quote-bg"><i class="fas fa-quote-right"></i></div>
                     </div>
 
                     <div class="testimonial-card">
-                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
                         <p>"Expertise en architecture logicielle qui a sauvé notre projet complexe."</p>
                         <div class="author">
                             <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Client">
                             <div><h4>Thomas Bernard</h4><span>Directeur, Agency One</span></div>
                         </div>
+                        <div class="quote-bg"><i class="fas fa-quote-right"></i></div>
                     </div>
 
-                    <!-- GROUPE 2 (Doublons pour l'effet infini) -->
+                    <!-- GROUPE 2 (Doublons) -->
                     <div class="testimonial-card">
-                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
                         <p>"Le niveau de sécurité de notre plateforme a été grandement amélioré. Travail technique impeccable."</p>
                         <div class="author">
                             <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
                             <div><h4>Marc Dupont</h4><span>CEO, TechStart</span></div>
                         </div>
+                        <div class="quote-bg"><i class="fas fa-quote-right"></i></div>
                     </div>
                     
                     <div class="testimonial-card">
-                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
                         <p>"L'application est rapide, le code est propre. Un développeur orienté résultats."</p>
                         <div class="author">
                             <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client">
                             <div><h4>Sophie Martin</h4><span>Fondatrice, FlowerShop</span></div>
                         </div>
+                        <div class="quote-bg"><i class="fas fa-quote-right"></i></div>
                     </div>
 
                     <div class="testimonial-card">
-                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
                         <p>"Expertise en architecture logicielle qui a sauvé notre projet complexe."</p>
                         <div class="author">
                             <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Client">
                             <div><h4>Thomas Bernard</h4><span>Directeur, Agency One</span></div>
                         </div>
+                        <div class="quote-bg"><i class="fas fa-quote-right"></i></div>
                     </div>
 
                 </div>
@@ -209,12 +211,9 @@
         <!-- CONTACT -->
         <section id="contact" class="bg-dark-section">
             <h2>Prêt à innover ?</h2>
-            <!-- Conteneur pour le message de succès -->
             <div id="form-success-message" class="success-message" style="display: none;">
                 <i class="fas fa-check-circle"></i> Message envoyé ! Je vous recontacte sous 24h.
             </div>
-
-            <!-- N'oubliez pas de remplacer VOTRE_ID_ICI par votre ID Formspree -->
             <form id="contact-form" action="https://formspree.io/f/VOTRE_ID_ICI" method="POST">
                 <div class="form-row">
                     <div class="form-group">
@@ -242,7 +241,6 @@
     <!-- FOOTER -->
     <footer>
         <div class="footer-content">
-            <!-- COLONNE 1 : Logo et réseaux sociaux -->
             <div class="footer-col footer-branding">
                 <h3>ST<span class="highlight">OXOR</span><span class="angle-bracket"> /&gt;</span></h3>
                 <p>Développement | Sécurité | Conception.</p>
@@ -251,8 +249,6 @@
                     <a href="https://github.com/votreprofil" target="_blank"><i class="fab fa-github"></i></a>
                 </div>
             </div>
-            
-            <!-- COLONNE 2 : Liens Rapides -->
             <div class="footer-col">
                 <h3>Liens Rapides</h3>
                 <ul>
@@ -262,8 +258,6 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
-
-            <!-- COLONNE 3 : Contact -->
             <div class="footer-col">
                 <h3>Contact</h3>
                 <p><i class="fas fa-envelope"></i> contact@email.com</p>
