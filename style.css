@@ -148,6 +148,31 @@ button:focus, a:focus {
     background: rgba(0, 255, 255, 0.1);
     border-radius: 3px;
 }
+/* Style pour les liens "Détails" (Boutons discrets) */
+.project-link {
+    display: inline-block;
+    color: var(--text-main); /* Texte blanc/gris par défaut */
+    border: 1px solid var(--border-color);
+    padding: 6px 12px;
+    margin-top: 10px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-family: 'Roboto Mono', monospace;
+    border-radius: 3px;
+}
+.project-link:hover {
+    color: var(--primary); /* Texte en vert au survol */
+    border-color: var(--primary); /* Bordure en vert au survol */
+    background: rgba(0, 255, 0, 0.05); /* Fond très léger */
+}
+.project-link i {
+    color: var(--primary); /* Flèche toujours en vert */
+    margin-left: 5px;
+    transition: margin-left 0.2s;
+}
+.project-link:hover i {
+    margin-left: 10px; /* Flèche glisse légèrement */
+}
 
 
 /* --- ANIMATION STAGGERED --- */
@@ -185,11 +210,7 @@ button:focus, a:focus {
 
 /* --- CONTACT / FORMULAIRE (OPTIMISÉ) --- */
 .bg-dark-section { background: var(--bg-contact); color: var(--text-main); padding: 6rem 10%; border-top: 1px solid var(--border-color); }
-form { 
-    max-width: 700px; 
-    margin: 0 auto; 
-    text-align: center; /* CENTRAGE DU BOUTON ET DES ÉLÉMENTS DE FORMULAIRE */
-}
+form { max-width: 700px; margin: 0 auto; text-align: center; }
 
 /* Champs de saisie optimisés */
 input, select, textarea { 
@@ -197,24 +218,18 @@ input, select, textarea {
     border: 1px solid var(--border-color); 
     border-radius: 5px; color: var(--text-main); 
     font-family: 'Inter', sans-serif;
-    text-align: left; /* Réaligne le texte des champs à gauche */
+    text-align: left;
 }
 input:focus, textarea:focus {
     outline: none;
     border-color: var(--primary); /* Vert Électrique au focus */
 }
 
-/* Le bouton a besoin d'une largeur définie pour être centré */
+.success-message { background: var(--accent); color: var(--bg-body); }
 button { 
-    width: 50%; /* Largeur réduite pour pouvoir être centré */
-    max-width: 300px; /* Limite la taille sur très grand écran */
-    margin: 20px auto 0; /* Centrage horizontal */
-    
-    background: var(--primary); color: var(--bg-body); cursor: pointer;
-    padding: 15px;
-    border: none;
-    border-radius: 5px;
-    font-weight: 700;
+    width: 50%; max-width: 300px; margin: 20px auto 0;
+    background: var(--primary); color: var(--bg-body); cursor: pointer; 
+    padding: 15px; border: none; border-radius: 5px; font-weight: 700;
 }
 button:hover { background: var(--primary-hover); }
 
