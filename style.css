@@ -101,12 +101,12 @@ h2 { text-align: center; font-size: 2.2rem; margin-bottom: 3rem; position: relat
 h2::after { content: ''; display: block; width: 40px; height: 2px; background: var(--primary); margin: 15px auto 0; border-radius: 1px; }
 
 /* --- CURSEUR ET FOCUS --- */
-button, .cta-button, .btn-devis, .nav-list a, .filter-btn, .socials a, .footer-col a, .card {
+button, .cta-button, .btn-devis, .nav-list a, .filter-btn, .socials a, .footer-col a {
     cursor: pointer;
     transition: all 0.3s ease-out;
 }
 button:focus, a:focus {
-    outline: 2px solid var(--primary);
+    outline: 2px solid var(--primary); 
     outline-offset: 3px;
     border-radius: 5px;
 }
@@ -117,49 +117,13 @@ button:focus, a:focus {
 }
 .hover-3d:hover { box-shadow: 0 0 0 1px var(--primary); }
 
-/* --- COMPÉTENCES (CARTE LIEN CORRECTION) --- */
-.card { /* Ceci cible les cartes <div> ET les cartes <a> (liens) */
+/* --- CARTES ET PROJETS (OPTIMISÉES) --- */
+.card, .project-card, .testimonial-card { 
+    background: var(--bg-card); border: 1px solid var(--border-color); 
     border-radius: 5px; padding: 30px; box-shadow: none; 
     transition: 0.3s;
-    text-decoration: none; /* Retrait du soulignement sur les cartes lien */
-    display: block; /* S'assurer que le lien prend toute la largeur du conteneur */
 }
 .card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; } 
-.card p { /* Assure que la description reste en couleur muted */
-    color: var(--text-muted); 
-}
-.card h3 { /* Assure que le titre reste en couleur principale */
-    color: var(--text-main);
-}
-.card:hover {
-    border-color: var(--primary); /* Ligne primaire au survol */
-}
-
-/* --- CARTES DE PROJETS ET FILTRES (CORRECTION DE LA TAILLE DES FILTRES) --- */
-
-/* Conteneur des filtres */
-.filter-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 40px;
-}
-
-/* Boutons de filtre */
-.filter-btn {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    color: var(--text-main);
-    padding: 8px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: 0.3s;
-    /* Correction de la largeur : n'occupe que l'espace nécessaire */
-    flex-grow: 0; 
-    flex-shrink: 0; 
-}
 
 /* Style spécifique aux cartes de projets ('Mes Réalisations') */
 .project-card {
@@ -173,6 +137,8 @@ button:focus, a:focus {
 }
 .project-info {
     padding: 20px; 
+    position: relative; /* Nécessaire pour positionner le lien overlay */
+    min-height: 120px; /* Assure de la place même sans bouton apparent */
 }
 .project-info h3 { font-size: 1.2rem; }
 .tag { 
@@ -184,22 +150,28 @@ button:focus, a:focus {
     background: rgba(0, 255, 255, 0.1);
     border-radius: 3px;
 }
-/* Style pour les liens "Détails" (Boutons discrets) */
-.project-link {
-    display: inline-block;
-    color: var(--text-main); 
-    border: 1px solid var(--border-color);
-    padding: 6px 12px;
-    margin-top: 10px;
+
+/* --- LIEN SUR CARTE DE PROJET (NOUVEAU STYLE NON INTRUSIF) --- */
+.project-link-overlay {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary); /* Toujours vert */
     text-decoration: none;
-    font-size: 0.95rem;
-    font-family: 'Roboto Mono', monospace;
-    border-radius: 3px;
+    font-weight: 600;
+    font-size: 1rem;
+    opacity: 0; /* Caché par défaut */
+    transform: translateX(10px); /* Décalé légèrement à droite */
+    transition: all 0.3s ease-out;
 }
-.project-link:hover {
-    color: var(--primary); 
-    border-color: var(--primary); 
-    background: rgba(0, 255, 0, 0.05); 
+.project-card:hover .project-link-overlay {
+    opacity: 1; /* Apparaît au survol de la carte */
+    transform: translateX(0); /* Glisse en place */
+}
+.project-link-overlay i {
+    margin-left: 5px;
 }
 
 
@@ -214,12 +186,18 @@ button:focus, a:focus {
     -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 .testimonial-track { display: flex; gap: 30px; width: max-content; animation: scroll 30s linear infinite; }
+.testimonial-track:hover { animation-play-state: paused; }
 .testimonial-card { 
     width: 350px; flex-shrink: 0; position: relative; 
     border: 1px solid var(--border-color); 
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.4); 
     border-radius: 5px; 
 }
+.testimonial-card:hover {
+    border-color: var(--primary);
+}
+
+/* Image de profil en rond (Optimisation) */
 .author img {
     width: 50px; height: 50px; border-radius: 50%; 
     object-fit: cover; border: 2px solid var(--accent); 
@@ -230,6 +208,8 @@ button:focus, a:focus {
 /* --- CONTACT / FORMULAIRE (OPTIMISÉ) --- */
 .bg-dark-section { background: var(--bg-contact); color: var(--text-main); padding: 6rem 10%; border-top: 1px solid var(--border-color); }
 form { max-width: 700px; margin: 0 auto; text-align: center; }
+
+/* Champs de saisie optimisés */
 input, select, textarea { 
     width: 100%; padding: 15px; background: var(--bg-body); 
     border: 1px solid var(--border-color); 
@@ -251,16 +231,21 @@ footer {
     background: var(--bg-footer); color: var(--text-muted); 
     padding: 40px 0 0; border-top: 1px solid var(--border-color);
 }
+
 .footer-content { 
     display: grid; grid-template-columns: 1.5fr 1fr 1fr; 
     gap: 50px; max-width: 1200px; margin: 0 auto; padding: 0 5%; 
 }
+
 .footer-col h3 { color: var(--text-main); margin-bottom: 20px; font-size: 1.2rem; }
 .footer-col a { color: var(--text-muted); text-decoration: none; display: block; }
 .footer-col a:hover { color: var(--primary); padding-left: 5px; }
-.footer-col p i { margin-right: 10px; color: var(--accent); } 
+
+.footer-col p i { margin-right: 10px; color: var(--accent); } /* Icônes de contact en Cyan */
+
 .socials a { color: var(--text-main); font-size: 1.2rem; }
 .socials a:hover { color: var(--primary); }
+
 .footer-bottom { 
     border-top: 1px solid var(--border-color);
     text-align: center; padding: 30px; margin-top: 50px; 
@@ -285,6 +270,7 @@ footer {
     .nav-list { order: 3; } 
     .form-row { grid-template-columns: 1fr; gap: 15px; }
     
+    /* Footer sur mobile: 1 colonne */
     .footer-content { 
         grid-template-columns: 1fr; 
         gap: 30px; 
@@ -295,5 +281,14 @@ footer {
         width: 100%; 
         max-width: none;
         margin: 20px 0 0;
+    }
+
+    /* Le lien sur la carte de projet s'aligne à gauche sur mobile */
+    .project-link-overlay {
+        bottom: 20px;
+        right: auto;
+        left: 20px;
+        transform: none;
+        opacity: 1; /* Toujours visible sur mobile */
     }
 }
