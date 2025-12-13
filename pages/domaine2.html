@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expertise: Sécurité Web | STOXOR</title>
+    <link rel="stylesheet" href="../style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-detail-content { max-width: 1000px; margin: 0 auto; padding: 4rem 20px; min-height: 80vh; }
+        .project-header { text-align: center; padding-bottom: 40px; border-bottom: 1px solid var(--border-color); margin-bottom: 60px; }
+        .project-header h1 { font-size: 2.8rem; margin-bottom: 10px; color: var(--primary); font-family: 'Roboto Mono', monospace; }
+        .project-header p { color: var(--accent); font-size: 1.1rem; font-weight: 500; }
+        .section-title { font-size: 1.8rem; color: var(--text-main); margin-top: 40px; margin-bottom: 20px; border-bottom: 2px solid var(--border-color); padding-bottom: 5px; }
+        .back-button { display: inline-flex; align-items: center; margin-bottom: 30px; text-decoration: none; color: var(--text-muted); }
+        .back-button:hover { color: var(--primary); }
+        .expertise-list { list-style: none; padding: 0; }
+        .expertise-list li { margin-bottom: 15px; padding-left: 10px; border-left: 3px solid var(--primary); }
+        .expertise-list li strong { color: var(--accent); }
+    </style>
+</head>
+<body>
+    <div class="project-detail-content">
+        <a href="../index.html#competences" class="back-button">
+            <i class="fas fa-arrow-left" style="margin-right: 10px;"></i> Retour aux Expertises
+        </a>
+        <div class="project-header">
+            <h1>Expertise en Sécurité Web</h1>
+            <p>Tests d'intrusion, audit de code, protection contre les menaces courantes (OWASP).</p>
+        </div>
+        <section>
+            <div class="section-title">Services d'Audit et de Remédiation</div>
+            <p>La sécurité est une priorité absolue. Je propose des services d'audit complets basés sur les meilleures pratiques pour identifier et corriger les vulnérabilités avant qu'elles ne soient exploitées.</p>
+            <ul class="expertise-list">
+                <li><strong>Audit de Code Source :</strong> Revue manuelle et automatisée du code pour détecter les failles logiques et les vulnérabilités OWASP Top 10 (Injection SQL, XSS, Faille d'accès).</li>
+                <li><strong>Tests d'Intrusion (PENTEST) :</strong> Simulation d'attaques réelles pour évaluer la résilience de l'application.</li>
+                <li><strong>Mise en Conformité :</strong> Assurer que votre application respecte les normes de sécurité modernes et les exigences réglementaires.</li>
+                <li><strong>Formation :</strong> Sensibilisation des équipes de développement aux bonnes pratiques de Secure Coding.</li>
+            </ul>
+        </section>
+        <section>
+            <div class="section-title">Méthodes Clés</div>
+            <ul class="expertise-list">
+                <li>Méthodologie OWASP, SAST & DAST (Analyse statique et dynamique)</li>
+                <li>Configuration de pare-feu applicatif (WAF)</li>
+                <li>Gestion des secrets et des tokens d'authentification (JWT, OAuth)</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
